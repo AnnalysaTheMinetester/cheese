@@ -1,0 +1,128 @@
+# textdomain: cheese
+
+
+### awards.lua ###
+
+Almost a pizza.=Quasi una pizza.
+Cheese!=Formaggio!
+Craft Stretched Cheese, then shape it to get Mozzarella. If only you had tomato sauce and dough ...=Crafta Pasta Filata, poi forma delle Mozzarelle. Se solo avessi salsa pomodoro e impasto per pizza ...
+Craft Stretched Cheese, then shape it to get a Caciocavallo and let it age, by hanging it at the ceiling.=Crafta Pasta Filata, poi forma un Caciocavallo e lascialo stagionare, appendendolo al soffitto.
+Cream, Sweet Cream!=Panna, Dolce Panna!
+Eat 50 pieces of cheese.=Mangia 50 pezzi di formaggio.
+Eat a piece of cheese.=Mangia un pezzo di formaggio.
+Eat a piece of special cheese.=Mangia un pezzo di formaggio speciale.
+Golden Butter.=Burro Dorato.
+How? Why? Who cares!@nMore Cheese!=Come? Perchè? Chissene!@nPiù formaggio!
+I need to hang this?!=Devo appenderlo?!
+Place a Cheese Aging Rack.=Piazza uno Scaffale da Stagionatura del Formaggio.
+Place a Churn.=Piazza una Zangola.
+Place a Copper Cauldron. You can use it to boil milk.=Piazza un Calderone di Rame. Puoi usarlo per far bollire il latte.
+Place a Cream Separator.=Piazza un Separatore di Crema.
+Ready. Set. Cheese!=Pronti. Partenza. Formaggio!
+The Milky Way.=La Via Lattea.
+To make a mouse jealous.=Far un topo geloso.
+
+### centrifuge.lua ###
+
+Coconut Cream=Panna di Cocco
+Cream Separator=Separatore di Crema
+Makes cream from milk or whey.=Fai crema da latte o siero.
+
+### cheese_rack.lua ###
+
+Wooden Cheese Rack=Scaffale di Legno per Formaggio
+Stone Cheese Rack=Scaffale di Pietra per Formaggio
+Mossy Cheese Rack=Scaffale Muschioso per Formaggio
+
+### churn.lua ###
+
+Churn=Zangola
+Makes butter from milk, or milk cream.=Fa burro dal latte, o panna.
+Nut Oil=Olio di Noci
+Vegetable Butter=Burro Vegetale
+Vegetable Butter Preparation=Preparazione per Burro Vegetale
+
+### fantasy.lua ###
+
+Obsidian Cheese Rack=Scaffale di Ossidiana per Formaggio
+
+Sparkling Cheese=Formaggio Luccicante
+Rose Ambrosia=Ambrosia Rosata
+Desert Delicacy=Delicatezza del Deserto
+Blazing Exquisitess=Squisitezza Ardente
+Frosted Tomme=Toma Gelata
+Shining Formage=Formage Brillante
+
+Frosted Spume=Spuma Gelata
+Bucket of Cactus Pulp=Secchio di Polpa di Cactus
+Noxious Cheddar=Cheddar Corrotto
+Shining Spume=Spuma Brillante
+You dont have enough mana to use the obsidian shelf.=Non hai abbastanza mana per poter usare lo scaffale di ossidiana.
+You used 10 mana points.=Hai usato 10 punti di mana.
+
+### fantasy_effects.lua ###
+
+Burden=Carico
+Chill Fall=Fresca Caduta
+Haste=Alacrità
+Impetus=Impeto
+Major Regen=Regen Maggiore
+Mana Regen=Regenerazione Mana
+Miasma=Miasma
+Regen=Regenerazione
+Snailing=Lumachezza
+
+### ice_cream.lua ###
+
+Ice Cream=Gelato
+Neapolitan Ice Cream=Gelato alla Napoletana
+Vegan Ice Cream=Gelato Vegano
+
+### init.lua ###
+
+Cauldron Boiling=Bollire col Calderone
+Centrifugation=Centrifugazione
+Cheese Rack Aging=Stagionatura nello Scaffale
+Churning=Usare la Zangola
+
+### items.lua ###
+
+Parmesan=Parmiggiano
+Fontal=Fontina
+Gruyere=Groviera
+Emmental=Emmental
+Monteray Jack=Monteray Jack
+Asiago=Asiago
+Toma=Toma
+Gouda=Gouda
+Gorgonzola=Gorgonzola
+Stilton=Stilton
+Brie=Brie
+Stracchino=Stracchino
+
+Butter=Burro
+Caciocavallo=Caciocavallo
+Curd=Cagliata
+Fondue=Fonduta
+Fresh Caciocavallo=Caciocavallo Fresco
+Fruit Tonic=Tonico Fruttato
+Milk Cream=Panna di Latte
+Mozzarella=Mozzarella
+Ricotta=Ricotta
+Scamorza=Scamorza
+Smoked Scamorza=Scamorza Affumicata
+Stretched Cheese=Pasta Filata
+Whey=Siero di Latte
+
+### milk_cauldron.lua ###
+
+ Stacks in Input Slots= Stack negli Slot di Input
+Empty=Vuoto
+Input Slot Empty=Slot di Input Vuoto
+Milk Cauldron=Calderone da Latte
+Cauldron boiling=Calderone sta bollendo
+Cauldron inactive=Calderone inattivo
+Cauldron is empty=Calderone vuoto
+No Fuel=Nessun Combustibile
+Cannot be boiled=Non può bollire
+Salt=Sale

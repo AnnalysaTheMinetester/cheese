@@ -1,0 +1,128 @@
+# textdomain: cheese
+
+
+### awards.lua ###
+
+Almost a pizza.=
+Cheese!=
+Craft Stretched Cheese, then shape it to get Mozzarella. If only you had tomato sauce and dough ...=
+Craft Stretched Cheese, then shape it to get a caciocavallo and let it age, by hanging it at the ceiling.=
+Cream, Sweet Cream!=
+Eat 50 pieces of cheese.=
+Eat a piece of cheese.=
+Eat a piece of special cheese.=
+Golden Butter.=
+How? Why? Who cares!@nMore Cheese!=
+I need to hang this?!=
+Place a Cheese Aging Rack.=
+Place a Churn.=
+Place a Copper Cauldron. You can use it to boil milk.=
+Place a Cream Separator.=
+Ready. Set. Cheese!=
+The Milky Way.=
+To make a mouse jealous.=
+
+### centrifuge.lua ###
+
+Coconut Cream=
+Cream Separator=
+Makes cream from milk or whey.=
+
+### cheese_rack.lua ###
+
+Wooden Cheese Rack=
+Stone Cheese Rack=
+Mossy Cheese Rack=
+
+### churn.lua ###
+
+Churn=
+Makes butter from milk, or milk cream.=
+Nut Oil=
+Vegetable Butter=
+Vegetable Butter Preparation=
+
+### fantasy.lua ###
+
+Obsidian Cheese Rack=
+
+Sparkling Cheese=
+Rose Ambrosia=
+Desert Delicacy=
+Blazing Exquisitess=
+Frosted Tomme=
+Shining Formage=
+
+Breezing Spume=
+Bucket of Cactus Pulp=
+Noxious Cheddar=
+Shining Spume=
+You dont have enough mana to use the obsidian shelf.=
+You used 10 mana points.=
+
+### fantasy_effects.lua ###
+
+Burden=
+Chill Fall=
+Haste=
+Impetus=
+Major Regen=
+Mana Regen=
+Miasma=
+Regen=
+Snailing=
+
+### ice_cream.lua ###
+
+Ice Cream=
+Neapolitan Ice Cream=
+Vegan Ice Cream=
+
+### init.lua ###
+
+Cauldron Boiling=
+Centrifugation=
+Cheese Rack Aging=
+Churning=
+
+### items.lua ###
+
+Parmesan=
+Fontal=
+Gruyere=
+Emmental=
+Monteray Jack=
+Asiago=
+Toma=
+Gouda=
+Gorgonzola=
+Stilton=
+Brie=
+Stracchino=
+
+Butter=
+Caciocavallo=
+Curd=
+Fondue=
+Fresh Caciocavallo=
+Fruit Tonic=
+Milk Cream=
+Mozzarella=
+Ricotta=
+Scamorza=
+Smoked Scamorza=
+Stretched Cheese=
+Whey=
+
+### milk_cauldron.lua ###
+
+ Stacks in Input Slots=
+Empty=
+Input Slot Empty=
+Milk Cauldron=
+Cauldron boiling=
+Cauldron inactive=
+Cauldron is empty=
+No Fuel=
+Cannot be boiled=
+Salt=
