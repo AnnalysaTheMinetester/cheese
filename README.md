@@ -12,17 +12,17 @@ Use copper to craft this furnace-like node. It can only boil some liquid held in
 bucket, therefor you cannot use it to smelt or cook anything else.
 You can use milk buckets, water buckets to make salt, and a few more items!
 It has 4 distinct slots types:
-####Input or Source
+#### Input or Source
 In order to activate the boiling, you need to add something to boil first!
-####Input Reserve
+#### Input Reserve
 As the max stack size of a bucket holding a liquid is 1, there are problems to boil
 more than one thing, therefor this slot list can come to your aid!
 When an item is done boiling in the Source slot, another item will be automatically
 fetched from this Reserve, and the boiling process will continue! (if you added boilable items of course)
-####Output or Destination
+#### Output or Destination
 This is a normal slot, like in the furnace, except that you will get the replacements
 here, so this slot will held empty buckets too!
-####Fuel
+#### Fuel
 Normal fuel slot, nothing to add here. Enjoy boiling! ;)
 
 ### Cheese Aging
