@@ -24,7 +24,7 @@ local path = minetest.get_modpath(minetest.get_current_modname()) .. "/"
 
 local craft_type_table = {
 	-- type name,					description,				icon
-	{"cauldron_boiling", S("Cauldron Boiling"), "cal_side.png"},
+	{"cauldron_boiling", S("Cauldron Boiling"), "milk_cauldron_active_side.png"},
 	{"cheese_rack_aging", S("Cheese Rack Aging"), "default_wood.png^cheese_front.png"},
 	{"churning", S("Churning"), "churn.png"},
 	{"centrifugation", S("Centrifugation"), "cream_separator_front.png"},
