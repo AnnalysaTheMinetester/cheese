@@ -12,17 +12,17 @@ Use copper to craft this furnace-like node. It can only boil some liquid held in
 bucket, therefor you cannot use it to smelt or cook anything else.
 You can use milk buckets, water buckets to make salt, and a few more items!
 It has 4 distinct slots types:
-####Input or Source
+#### Input or Source
 In order to activate the boiling, you need to add something to boil first!
-####Input Reserve
+#### Input Reserve
 As the max stack size of a bucket holding a liquid is 1, there are problems to boil
 more than one thing, therefor this slot list can come to your aid!
 When an item is done boiling in the Source slot, another item will be automatically
 fetched from this Reserve, and the boiling process will continue! (if you added boilable items of course)
-####Output or Destination
+#### Output or Destination
 This is a normal slot, like in the furnace, except that you will get the replacements
 here, so this slot will held empty buckets too!
-####Fuel
+#### Fuel
 Normal fuel slot, nothing to add here. Enjoy boiling! ;)
 
 ### Cheese Aging
@@ -48,7 +48,7 @@ on a wooden ceiling in the dark. I know, when i said that there is *Mozzarella*,
 you would want a pizza, right? Not here, sorry. This mod only provides cheeses.
 Their uses are on other mods using this one.
 
-### Maing Cream
+### Making Cream
 There are other dairy products, you know? Like *Cream*! And what usage has the other liquid
 that you can from boiling milk? Just craft a *Cream Separator* and you'll find out!
 Right click on it, with either milk or *Whey*, and it will spin, (technically, centrifuging)
@@ -79,7 +79,7 @@ Eating each fantasy cheese will give you a special effect if you have the [playe
 (The effects still need to be worked on, they are not perfect).
 
 ### License
-Code and Textures by Annalysa, i'm using GNU LESSER GENERAL PUBLIC LICENSE v2.1.
+Code and Textures by Annalysa, GLGP LICENSE v2.1 for code, CC-BY-SA 3.0 UNPORTED for textures.
 Sounds are CC0.
 
-##### Italian traslation available
+##### *Italian traslation available*
