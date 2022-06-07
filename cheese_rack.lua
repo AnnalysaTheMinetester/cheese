@@ -50,7 +50,7 @@ local cheese_rack_empty = {
 	description = "Cheese Rack",
 	tiles = { "default_wood.png", },
 	drawtype = "nodebox",
-	--paramtype = "light",
+	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {choppy=2},
 	sounds = default.node_sound_wood_defaults(),
@@ -131,7 +131,7 @@ local cheese_rack_with_cheese = {
 		"default_wood.png^cheese_front.png"
 	},
 	drawtype = "nodebox",
-	--paramtype = "light",
+	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {},
 	sounds = default.node_sound_wood_defaults(),
@@ -219,7 +219,7 @@ for k, v in pairs(rack_types) do
 	end
 
 	cheese_rack_with_aging_cheese.on_timer = function(pos)
-		if minetest.get_node_light(pos) <= 11 and math.random() > 0.1 then
+		if minetest.get_node_light(pos) <= 11 and math.random(1,10) <= 1 then
 			local node = minetest.get_node(pos)
 			if node.name ~= "ignore" then
 				minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_with_cheese", param2 = node.param2})

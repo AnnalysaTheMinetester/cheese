@@ -54,18 +54,19 @@ if cheese.cv then
 	minetest.register_craft({
 		type = "shapeless",
 		output = "cheese:vegan_ice_cream_base 4",
-		recipe = {"cucina_vegana:soy_milk", "cheese:coconut_cream", "cheese:coconut_cream", "group:food_sugar", "default:snow"},
+		recipe = {"cucina_vegana:soy_milk", "cheese:coconut_cream", "cheese:coconut_cream",
+							"group:food_sugar", "default:snow"},
 		replacements = {{"cucina_vegana:soy_milk", "vessels:drinking_glass"} },
 	})
 end
-if cheese.moretrees then
-	minetest.register_craft({
-		type = "shapeless",
-		output = "cheese:vegan_ice_cream_base 4",
-		recipe = {"moretrees:coconut_milk", "moretrees:coconut_milk", "cheese:coconut_cream", "cheese:coconut_cream", "group:food_sugar", "default:snow"},
-		replacements = {{"moretrees:coconut_milk", "vessels:drinking_glass"}, {"moretrees:coconut_milk", "vessels:drinking_glass"}},
-	})
-end
+minetest.register_craft({
+	type = "shapeless",
+	output = "cheese:vegan_ice_cream_base 4",
+	recipe = {"group:food_coconut_milk", "group:food_coconut_milk", "cheese:coconut_cream",
+						"cheese:coconut_cream", "group:food_sugar", "default:snow"},
+	replacements = {{"group:food_coconut_milk", "vessels:drinking_glass"},
+									{"group:food_coconut_milk", "vessels:drinking_glass"}},
+})
 
 if cheese.farming then
 	minetest.register_craftitem("cheese:neapolitan_ice_cream", {
@@ -76,7 +77,7 @@ if cheese.farming then
 	})
 
 	minetest.register_craft({
-		output = "cheese:neapolitan_ice_cream 4",
+		output = "cheese:neapolitan_ice_cream 3",
 		recipe = {
 			{"", "", "group:food_strawberry"},
 			{"farming:vanilla_extract", "group:food_chocolate", "group:food_strawberry"},
@@ -86,7 +87,7 @@ if cheese.farming then
 	})
 
 	minetest.register_craft({
-		output = "cheese:neapolitan_ice_cream 4",
+		output = "cheese:neapolitan_ice_cream 3",
 		recipe = {
 			{"", "", "group:food_strawberry"},
 			{"farming:vanilla_extract", "farming:chocolate_dark", "group:food_strawberry"},

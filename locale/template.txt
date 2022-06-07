@@ -25,6 +25,7 @@ To make a mouse jealous.=
 ### centrifuge.lua ###
 
 Coconut Cream=
+Coconut Milk=
 Cream Separator=
 Makes cream from milk or whey.=
 

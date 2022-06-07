@@ -21,7 +21,7 @@ minetest.register_craft({
 	type = "cooking",
 	output = "cheese:ricotta",
 	recipe = "cheese:whey",
-	cooktime = 30,
+	cooktime = 15,
 })
 
 minetest.register_craftitem("cheese:milk_cream", {
@@ -55,6 +55,7 @@ if minetest.get_modpath("mobs") then
 end
 if cheese.cv then
 	minetest.clear_craft({output = "cucina_vegana:imitation_butter"})
+	minetest.clear_craft({output = "cucina_vegana:imitation_cheese"})
 end
 
 if minetest.get_modpath("petz") then -- petz hard-depens on farming

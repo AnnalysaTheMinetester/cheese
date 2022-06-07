@@ -10,8 +10,34 @@ if cheese.moretrees then
 		inventory_image = "coconut_cream.png",
 		groups = {food_cream = 1, vegan_alternative = 1, food_vegan = 1},
 	})
+	minetest.override_item("moretrees:coconut_milk",{
+		groups = {vessel = 1, food_coconut_milk = 1},
+	})
 
 	table.insert(creamable, {"moretrees:coconut_milk",	"cheese:coconut_cream 2"})
+else
+	if minetest.get_modpath("ethereal") then
+		minetest.register_craftitem("cheese:coconut_cream", {
+			description = S("Coconut Cream"),
+			inventory_image = "coconut_cream.png",
+			groups = {food_cream = 1, vegan_alternative = 1, food_vegan = 1},
+		})
+
+		minetest.register_craftitem("cheese:coconut_milk", {
+			description = S("Coconut Milk"),
+			inventory_image = "cheese_coconut_milk_glass.png",
+			--wield_image = "cheese_coconut_milk_glass.png",
+			on_use = minetest.item_eat(2, "vessels:drinking_glass"),
+			groups = {vessel = 1, food_coconut_milk = 1},
+		})
+
+		minetest.register_craft({
+			type = "shapeless",
+			output = "cheese:coconut_milk",
+			recipe = { "ethereal:coconut_slice", "vessels:drinking_glass"	},
+		})
+		table.insert(creamable, {"cheese:coconut_milk",	"cheese:coconut_cream 2"})
+	end
 end
 
 for k, v in pairs(creamable) do
@@ -43,7 +69,7 @@ local function is_accettable_source(item_name)
 end
 
 local function should_return (item_name)
-	if item_name == "moretrees:coconut_milk" then
+	if item_name == "moretrees:coconut_milk" or item_name == "cheese:coconut_milk" then
 		return "vessels:drinking_glass"
 	elseif minetest.get_item_group( item_name , "food_milk") then
 		return "bucket:bucket_empty"

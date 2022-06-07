@@ -139,7 +139,7 @@ for k, v in pairs(fantasy_cheeses) do
 			description = S(""..v[1]:gsub("_", " "):gsub("(%a)(%a+)", function(a, b) return string.upper(a) .. string.lower(b) end) ),
 			inventory_image = v[1]..".png",
 			on_use = use,
-			groups = {food = 4, food_cheese = 1, food_fantasy_cheese = 1},
+			groups = {food = 4, food_cheese = 1, food_fantasy_cheese = 1, not_in_creative_inventory = 1},
 		})
 	--[[
 	if cheese.ui then
@@ -276,7 +276,7 @@ local cheese_rack_empty = {
 local cheese_rack_with_aging_cheese = {
 	description = "Cheese Rack with Aging Cheese",
 	drawtype = "nodebox",
-	--paramtype = "light",
+	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky = 4, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
@@ -309,7 +309,7 @@ local cheese_rack_with_aging_cheese = {
 local cheese_rack_with_cheese = {
 	description = "Cheese Rack with Cheese",
 	drawtype = "nodebox",
-	--paramtype = "light",
+	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky = 4, not_in_creative_inventory = 1},
 	sounds = default.node_sound_stone_defaults(),
@@ -413,7 +413,7 @@ for k, v in pairs(rack_types) do
 	end
 
 	cheese_rack_with_aging_cheese.on_timer = function(pos)
-		if minetest.get_node_light(pos) <= 11 and math.random() > 0.1 then
+		if minetest.get_node_light(pos) <= 11 and math.random(1,10) <= 1 then
 			local node = minetest.get_node(pos)
 			local aging = minetest.get_meta(pos):get_string("aging")
 			if node.name ~= "ignore" then

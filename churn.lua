@@ -5,52 +5,56 @@ local churnable = {
 	{"cheese:milk_cream",		"cheese:butter 2"},
 }
 
-if cheese.moretrees then
-	minetest.register_craftitem("cheese:vegetable_butter_prep", {
-		description = S("Vegetable Butter Preparation"),
-		inventory_image = "vegetable_butter_prep.png",
-		groups = {vegan_alternative = 1},
-	})
-	minetest.register_craftitem("cheese:vegetable_butter", {
-		description = S("Vegetable Butter"),
-		inventory_image = "vegetable_butter.png",
-		groups = {food_butter = 1, vegan_alternative = 1, food_vegan = 1},
-	})
-	local vegetable_milk = "moretrees:coconut_milk" -- best use soy as a replacement, just to mix things up
-	if cheese.farming ~= nil then
-		vegetable_milk = "farming:soy_milk"
-	elseif cheese.cv then
-		vegetable_milk = "cucina_vegana:soy_milk"
-	end
+minetest.register_craftitem("cheese:vegetable_butter_prep", {
+	description = S("Vegetable Butter Preparation"),
+	inventory_image = "vegetable_butter_prep.png",
+	groups = {vegan_alternative = 1},
+})
+minetest.register_craftitem("cheese:vegetable_butter", {
+	description = S("Vegetable Butter"),
+	inventory_image = "vegetable_butter.png",
+	groups = {food_butter = 1, vegan_alternative = 1, food_vegan = 1},
+})
+local vegetable_milks = {"group:food_coconut_milk"} -- all are in vessels:drinking_glass
+if cheese.farming ~= nil then
+	table.insert(vegetable_milks, "farming:soy_milk" )
+end
+if cheese.cv then
+	table.insert(vegetable_milks, "cucina_vegana:soy_milk" )
+end
 
-	--ethereal has olive, cucina_vegana has lots and farming has the least favourite hemp oil, still there could be no item belonging to the group:food_oil
-	if not ( cheese.farming or minetest.get_modpath("ethereal") or cheese.cv ) then
-		minetest.register_craftitem("cheese:nut_oil", {
-			description = S("Nut Oil"),
-			inventory_image = "nut_oil.png",
-			groups = {food_oil = 1, vegan_alternative = 1, vessel = 1},
-		})
-		local nuts = {"moretrees:spruce_nuts", "moretrees:fir_nuts", "moretrees:cedar_nuts"}
-		for i=1,#nuts do
-			minetest.override_item(nuts[i], {
-				groups = {food = 1, food_nut = 1},
-			})
-		end
-		minetest.register_craft({
-			output = "cheese:nut_oil",
-			type = "shapeless",
-			recipe = { "vessels:glass_bottle", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut" },
+--ethereal has olive, cucina_vegana has lots and farming has the least favourite hemp oil, still there could be no item belonging to the group:food_oil
+if not ( cheese.farming or minetest.get_modpath("ethereal") or cheese.cv ) and cheese.moretrees then
+	minetest.register_craftitem("cheese:nut_oil", {
+		description = S("Nut Oil"),
+		inventory_image = "nut_oil.png",
+		groups = {food_oil = 1, vegan_alternative = 1, vessel = 1},
+	})
+	local nuts = {"moretrees:spruce_nuts", "moretrees:fir_nuts", "moretrees:cedar_nuts"}
+	for i=1,#nuts do
+		minetest.override_item(nuts[i], {
+			groups = {food = 1, food_nut = 1},
 		})
 	end
 	minetest.register_craft({
+		output = "cheese:nut_oil",
+		type = "shapeless",
+		recipe = { "vessels:glass_bottle", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut" },
+	})
+end -- id there is no known food oil, but there is moretrees
+
+for i=1,#vegetable_milks do
+	minetest.register_craft({
 		output = "cheese:vegetable_butter_prep",
 		type = "shapeless",
-		recipe = { "group:food_oil" , "cheese:coconut_cream", "cheese:coconut_cream", vegetable_milk, vegetable_milk },
-		replacements = {{vegetable_milk , "vessels:drinking_glass"}, {vegetable_milk , "vessels:drinking_glass"}, {"group:food_oil" , "vessels:glass_bottle"}, },
+		recipe = { "group:food_oil" , "cheese:coconut_cream", "cheese:coconut_cream", vegetable_milks[i], vegetable_milks[i] },
+		replacements = {{vegetable_milks[i] , "vessels:drinking_glass"},
+										{vegetable_milks[i] , "vessels:drinking_glass"},
+										{"group:food_oil" , "vessels:glass_bottle"}, },
 	})
-
-	table.insert(churnable, {"cheese:vegetable_butter_prep", "cheese:vegetable_butter 2"})
 end
+
+table.insert(churnable, {"cheese:vegetable_butter_prep", "cheese:vegetable_butter 2"})
 
 for k, v in pairs(churnable) do
 	if cheese.ui then
