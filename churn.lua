@@ -1,9 +1,19 @@
 local S = cheese.S
 
-local churnable = {
-	{"group:food_milk",			"cheese:butter"},
-	{"cheese:milk_cream",		"cheese:butter 2"},
-}
+local churnable = {}
+
+if cheese.there_is_milk then
+	minetest.register_craftitem("cheese:butter", {
+		description = S("Butter"),
+		inventory_image = "butter.png",
+		groups = {milk_product = 1, food_butter = 1},
+	})
+	if minetest.registered_items["mobs:wooden_bucket_milk"] then
+		table.insert(creamable, {"mobs:wooden_bucket_milk", "cheese:butter"})
+	end
+	table.insert(churnable, {"group:food_milk", 	"cheese:butter"		} )
+	table.insert(churnable, {"cheese:milk_cream", "cheese:butter 2" } )
+end
 
 minetest.register_craftitem("cheese:vegetable_butter_prep", {
 	description = S("Vegetable Butter Preparation"),
@@ -15,33 +25,40 @@ minetest.register_craftitem("cheese:vegetable_butter", {
 	inventory_image = "vegetable_butter.png",
 	groups = {food_butter = 1, vegan_alternative = 1, food_vegan = 1},
 })
-local vegetable_milks = {"group:food_coconut_milk"} -- all are in vessels:drinking_glass
-if cheese.farming ~= nil then
-	table.insert(vegetable_milks, "farming:soy_milk" )
-end
-if cheese.cv then
-	table.insert(vegetable_milks, "cucina_vegana:soy_milk" )
-end
+local vegetable_milks = {}
+-- all use vessels:drinking_glass
+if cheese.farming then table.insert(vegetable_milks, "farming:soy_milk") end
+if cheese.cv then table.insert(vegetable_milks, "cucina_vegana:soy_milk") end
+if cheese.ethereal or cheese.moretrees then table.insert(vegetable_milks, "group:food_coconut_milk") end
 
 --ethereal has olive, cucina_vegana has lots and farming has the least favourite hemp oil, still there could be no item belonging to the group:food_oil
-if not ( cheese.farming or minetest.get_modpath("ethereal") or cheese.cv ) and cheese.moretrees then
-	minetest.register_craftitem("cheese:nut_oil", {
-		description = S("Nut Oil"),
-		inventory_image = "nut_oil.png",
-		groups = {food_oil = 1, vegan_alternative = 1, vessel = 1},
-	})
-	local nuts = {"moretrees:spruce_nuts", "moretrees:fir_nuts", "moretrees:cedar_nuts"}
-	for i=1,#nuts do
-		minetest.override_item(nuts[i], {
-			groups = {food = 1, food_nut = 1},
+if not ( cheese.farming or cheese.ethereal or cheese.cv ) then
+	if cheese.moretrees then
+		minetest.register_craftitem("cheese:nut_oil", {
+			description = S("Nut Oil"),
+			inventory_image = "nut_oil.png",
+			groups = {food_oil = 1, vegan_alternative = 1, vessel = 1},
 		})
-	end
-	minetest.register_craft({
-		output = "cheese:nut_oil",
-		type = "shapeless",
-		recipe = { "vessels:glass_bottle", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut" },
-	})
-end -- id there is no known food oil, but there is moretrees
+		local nuts = {"moretrees:spruce_nuts", "moretrees:fir_nuts", "moretrees:cedar_nuts"}
+		for i=1,#nuts do
+			minetest.override_item(nuts[i], {
+				groups = {food = 1, food_nut = 1},
+			})
+		end
+		minetest.register_craft({
+			output = "cheese:nut_oil",
+			type = "shapeless",
+			recipe = { "vessels:glass_bottle", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut", "group:food_nut" },
+		})
+	else -- default-only alternative, a bit non-sense, but it is something... i would have used starch but there isnt in this case
+		minetest.register_craft({
+			output = "cheese:vegetable_butter_prep",
+			type = "shapeless",
+			recipe = { "default:sand_with_kelp" , "cheese:cactus_cream", "cheese:cactus_cream", "group:water_bucket" },
+			replacements = {{"group:water_bucket", "bucket:bucket_empty"}}
+		})
+	end -- if moretrees, one oil is registerable
+end -- if there is no known food oil registered already
 
 for i=1,#vegetable_milks do
 	minetest.register_craft({
@@ -49,8 +66,8 @@ for i=1,#vegetable_milks do
 		type = "shapeless",
 		recipe = { "group:food_oil" , "cheese:coconut_cream", "cheese:coconut_cream", vegetable_milks[i], vegetable_milks[i] },
 		replacements = {{vegetable_milks[i] , "vessels:drinking_glass"},
-										{vegetable_milks[i] , "vessels:drinking_glass"},
-										{"group:food_oil" , "vessels:glass_bottle"}, },
+		{vegetable_milks[i] , "vessels:drinking_glass"},
+		{"group:food_oil" , "vessels:glass_bottle"}, },
 	})
 end
 
@@ -83,7 +100,9 @@ local function is_accettable_source(item_name)
 end
 
 local function should_return (item_name) -- only inside the is_accettable_source check therefor there is no need for the food_vegan check
-	if minetest.get_item_group( item_name , "food_milk") > 0 then
+	if item_name == "mobs:wooden_bucket_milk" then
+		return "wooden_bucket:bucket_wood_empty"
+	elseif minetest.get_item_group( item_name , "food_milk") > 0 then
 		return "bucket:bucket_empty"
 	end
 	return "no"

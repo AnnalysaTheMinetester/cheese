@@ -53,7 +53,7 @@ local allowed_recipes = {
   -- input item,  output item, second item, replacement, boiling time
   {"cheese:whey", "cheese:ricotta", nil ,     nil ,        15 },
 }
--- the cooking recipes for these items should NOT be removed.
+-- the cooking recipes for these items should NOT be removed. Boiling is a separate process.
 
 if minetest.registered_items["mobs:bucket_milk"] then
   table.insert(allowed_recipes,
@@ -80,14 +80,16 @@ end
 if salt == "" then
   minetest.register_node("cheese:salt", {
   	description = S("Salt"),
+    drawtype = "plantlike",
+    tiles = {"cheese_salt.png"},
   	inventory_image = "cheese_salt.png",
   	wield_image = "cheese_salt.png",
-  	paramtype = "light",
-  	drawtype = "plantlike",
-  	tiles = {"cheese_salt.png"},
-  	groups = {food_salt = 1, vessel = 1, dig_immediate = 3, attached_node = 1},
+    paramtype = "light",
+    walkable = true,
+    groups = {food_salt = 1, vessel = 1, dig_immediate = 3, attached_node = 1},
   	sounds = default.node_sound_glass_defaults(),
   })
+  salt = "cheese:salt"
 end
 --[[ what if you dont have farming installed??? should i create a mortar and pestle just for this?!
 if minetest.get_modpath("caverealms") then
@@ -103,8 +105,15 @@ table.insert(allowed_recipes,
 
 if minetest.get_modpath("bucket_wooden") then
   table.insert(allowed_recipes,
-  {"bucket_wooden:bucket_water", salt .." 1", nil, "bucket_wooden:bucket_empty", 8 } )
-end
+  {"bucket_wooden:bucket_water", salt, nil, "bucket_wooden:bucket_empty", 8 } )
+
+  if minetest.get_modpath("mobs_animal") then
+    table.insert(allowed_recipes,
+    {"mobs:wooden_bucket_milk", "cheese:curd", "cheese:whey", "bucket_wooden:bucket_empty", 8 } )
+  end -- if mobs_animal is installed, it registeres another milk_bucket
+
+end -- if wooden_bucket
+
 local bc = "cheese:bucket_cactus"
 if minetest.registered_items["ethereal:bucket_cactus"] then
   bc = "ethereal:bucket_cactus"

@@ -11,6 +11,7 @@ First lets talk about the *Milk Cauldron*:
 Use copper to craft this furnace-like node. It can only boil some liquid held in a
 bucket, therefor you cannot use it to smelt or cook anything else.
 You can use milk buckets, water buckets to make salt, and a few more items!
+*Also... hoppers work on the Cauldron, the same way as a furnace*
 It has 4 distinct slots types:
 #### Input or Source
 In order to activate the boiling, you need to add something to boil first!
@@ -27,14 +28,14 @@ Normal fuel slot, nothing to add here. Enjoy boiling! ;)
 
 ### Cheese Aging
 Now, did you expect cheese to come out of that cauldron? Well, nope.
-Milk boils into two things, *Curd* with is the sold part, and *Whey* which is the liquid part.
+Milk boils into two things, *Curd* with is the solid part, and *Whey* which is the liquid part.
 Cheese is essentially aged curd, but where to start this process? In a *Cheese Aging Rack*!
-There are a total of 12 different cheese types that you can acquire, through the use of this Rack,
+There are a total of 12 different cheese types that you can acquire, through the use of Racks,
 placed in a dark spot. There are 3 types of Cheese Rack, *Wooden*, *Stone* and *Mossy*, each with
-their aging time, giving you a a few pieces of one random type of the 4 assigned to that Rack.
+their aging time, giving you a few pieces of one random type of the 4 assigned to that Rack.
 So if you want a particular cheese, you need to have the right Rack.
 If you have the mod [astral] installed, there will be differences upon harvesting the aged cheese,
-if certain moon or sun event is happening.
+if a certain moon or sun event is happening.
 You can still normally cook *Curd* to get a "default" cheese (for example mobs:cheese)
 and *Whey* into *Ricotta* (You can boil it in the *Milk Cauldron* too).
 
@@ -50,8 +51,8 @@ Their uses are on other mods using this one.
 
 ### Making Cream
 There are other dairy products, you know? Like *Cream*! And what usage has the other liquid
-that you can from boiling milk? Just craft a *Cream Separator* and you'll find out!
-Right click on it, with either milk or *Whey*, and it will spin, (technically, centrifuging)
+that you can get from boiling milk? Just craft a *Cream Separator* and you'll find out!
+Right click on it, with either milk or *Whey*, and the Separator will spin, (technically, centrifuging)
 giving you some delicious *Cream*! If you use milk you will get more than just by using *Whey*.
 
 ### Making Butter
@@ -66,14 +67,15 @@ have the [icecream] mod installed, the recipes will now use this new base.
 
 ### Veg Alternatives
 Why? Why not! I wanted to include more people, so this mod can be used by dairy-free people too!
-if you have the [moretrees] mod, you can make *Coconut Cream* with coconut milk usign the *Cream Separator*,
-*Vegetable Butter* by using the *Churn* with *Vegetable Butter Preparation*, crafted with *Coconut Cream*,
-oil and vegetable milk and *Vegan Ice Cream* crafting together vegetable milk, *Coconut Cream*, sugar and snow.
+if you have the [moretrees] mod, or the [ethereal] mod, you can make *Coconut Cream*
+with coconut milk usign the *Cream Separator*, *Vegetable Butter* by using the *Churn*
+with *Vegetable Butter Preparation*, crafted with *Coconut Cream*, oil and vegetable
+milk, and *Vegan Ice Cream* crafting together vegetable milk, *Coconut Cream*, sugar and snow.
 
 ### Fantasy Cheeses
 Yes, you read that right. There is a fourth Rack type: *Obsidian*. You can use *Curd*
 or ... other items, each giving you a specific type of cheese, so this isn't random.
-I'll let you find out how to use it, but you'll need [ethereal] mod for most cheese.
+I'll let you find out how to use it, but you'll need [ethereal] mod for most cheeses.
 Its behaviour changes if you again have [astral] and [mana] mod installed. There is a change to [moobloom] too.
 Eating each fantasy cheese will give you a special effect if you have the [playereffects] mod installed.
 (The effects still need to be worked on, they are not perfect).
@@ -82,4 +84,4 @@ Eating each fantasy cheese will give you a special effect if you have the [playe
 Code and Textures by Annalysa, GLGP LICENSE v2.1 for code, CC-BY-SA 3.0 UNPORTED for textures.
 Sounds are CC0.
 
-##### *Italian traslation available*
+##### Italian traslation available

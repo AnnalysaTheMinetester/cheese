@@ -1,5 +1,10 @@
 local S = cheese.S
-
+--[[ 					curd -cooking-> default_cheese
+						 /		 -aging-> aged_cheeses
+milk -boiling-> whey -cooking-> ricotta
+		| \------------ \-centrifugation-> cream -craft-> ice_cream
+		 \-------------------------------------- \-churning-> butter
+]]--
 minetest.register_craftitem("cheese:curd", {
 	description = S("Curd"),
 	inventory_image = "curd.png",
@@ -22,18 +27,6 @@ minetest.register_craft({
 	output = "cheese:ricotta",
 	recipe = "cheese:whey",
 	cooktime = 15,
-})
-
-minetest.register_craftitem("cheese:milk_cream", {
-	description = S("Milk Cream"),
-	inventory_image = "milk_cream.png",
-	groups = {milk_product = 1, food_cream = 1},
-})
-
-minetest.register_craftitem("cheese:butter", {
-	description = S("Butter"),
-	inventory_image = "butter.png",
-	groups = {milk_product = 1, food_butter = 1},
 })
 
 local default = "cheese:toma"
@@ -64,7 +57,7 @@ if minetest.get_modpath("petz") then -- petz hard-depens on farming
 	minetest.override_item("petz:blueberry_cheese_cake",{
 		groups = {flammable = 2, food = 2},
 	})
-	-- minetest.after(1)
+	-- minetest.after(1) cucina_vegana also override the craft, and that has priority
 	minetest.clear_craft({output = "petz:blueberry_cheese_cake"})
 	minetest.register_craft({
 		type = "shapeless",
@@ -110,6 +103,7 @@ for k, v in pairs(cheese.aged_cheeses) do
 end
 
 -- curd + curd + curd + water bucket + salt = pasta filata -> mozzarella caciocavallo scamorza
+-- can be done even with bare minimum mods, as water can be boiled to get salt
 minetest.register_craftitem("cheese:stretched_cheese", {
 	description = S("Stretched Cheese"),
 	inventory_image = "stretched_cheese.png",
@@ -133,8 +127,8 @@ end
 minetest.register_craftitem("cheese:mozzarella", {
 	description = S("Mozzarella"),
 	inventory_image = "mozzarella.png",
-	on_use = minetest.item_eat(6),
-	groups = {food = 6, food_cheese = 1},
+	on_use = minetest.item_eat(4),
+	groups = {food = 4, food_cheese = 1},
 })
 minetest.register_craft({
 	output = "cheese:mozzarella 4",
@@ -306,55 +300,71 @@ minetest.register_craft({
 	type = "cooking",
 	output = "cheese:smoked_scamorza",
 	recipe = "cheese:scamorza",
-	cooktime = 14,
+	cooktime = 11,
 })
---[[
-if cheese.farming then
-	minetest.register_craftitem("cheese:fondue", {
-		description = "Fondue",
-		inventory_image = "fondue.png",
-		on_use = minetest.item_eat(8, "farming:pot"),
-		groups = {food = 8},
-	})
-	minetest.register_craft({
-		type = "shapeless",
-		output = "cheese:fondue",
-		recipe = {"farming:pot", "group:food_cheese", "group:food_cheese", "group:food_cheese" },
-	})
-else ]]--
-	minetest.register_craftitem("cheese:fondue", {
-		description = S("Fondue"),
-		inventory_image = "fondue.png",
-		on_use = minetest.item_eat(8, "default:copper_ingot 3"),
-		groups = {food = 8},
-	})
-	minetest.register_craft({
-		output = "cheese:fondue",
-		recipe = {
-			{"group:food_cheese", "", "group:food_cheese"},
-			{"default:copper_ingot", "group:food_cheese", "default:copper_ingot"},
-			{"", "default:copper_ingot", ""},
-		}
-	})
---end
-minetest.register_craftitem("cheese:fruit_tonic", {
-	description = S("Fruit Tonic"),
-	inventory_image = "fruit_tonic.png",
-	on_use = minetest.item_eat(9, "vessels:glass_bottle"),
-	groups = {food = 9, vessel = 1},
+
+minetest.register_craftitem("cheese:fondue", {
+	description = S("Fondue"),
+	inventory_image = "fondue.png",
+	on_use = minetest.item_eat(8, "default:copper_ingot 3"),
+	groups = {food = 8},
 })
 minetest.register_craft({
-	output = "cheese:fruit_tonic",
+	output = "cheese:fondue",
 	recipe = {
-		{"group:food_grapes", "group:food_orange", "group:food_apple"},
-		{"group:food_apple", "group:food_grapes", "group:food_orange"},
-		{"vessels:glass_bottle", "cheese:whey", "vessels:glass_bottle"},
-	},
+		{"group:food_cheese", "", "group:food_cheese"},
+		{"default:copper_ingot", "group:food_cheese", "default:copper_ingot"},
+		{"", "default:copper_ingot", ""},
+	}
 })
+
+if cheese.ethereal and cheese.farming then
+	minetest.register_craftitem("cheese:fruit_tonic", {
+		description = S("Fruit Tonic"),
+		inventory_image = "fruit_tonic.png",
+		on_use = minetest.item_eat(8, "vessels:glass_bottle"),
+		groups = {food = 8, vessel = 1},
+	})
+	minetest.register_craft({
+		output = "cheese:fruit_tonic",
+		recipe = {
+			{"group:food_grapes", "group:food_orange", "group:food_apple"},
+			{"group:food_apple", "group:food_grapes", "group:food_orange"},
+			{"vessels:glass_bottle", "cheese:whey", "vessels:glass_bottle"},
+		},
+	})
+end -- if ingredients are present, apple:default, grapes:farming, orange:ethereal
+
 if cheese.farming then
 	minetest.register_craft({
 		output = "farming:porridge",
 		type = "shapeless",
 		recipe = {"farming:oat", "farming:oat", "farming:oat" ,"farming:oat", "group:food_bowl", "cheese:whey"},
+	})
+end
+
+if minetest.get_modpath("pie") then
+	minetest.clear_craft({output = "pie:rvel_0"})
+	minetest.register_craft({
+		output = "pie:rvel_0",
+		recipe = {
+			{"group:food_cocoa", "group:food_milk", "dye:red"},
+			{"group:food_sugar", "group:food_egg", "group:food_sugar"},
+			{"group:food_flour", "group:food_cream", "group:food_flour"}
+		},
+		replacements = {{"mobs:bucket_milk", "bucket:bucket_empty"},
+										{"animalia:bucket_milk", "bucket:bucket_empty"},
+										{"petz:bucket_milk", "bucket:bucket_empty"},
+										{"cucina_vegana:soy_milk", "vessels:glass_bottle"},}
+	})
+
+	minetest.clear_craft({output = "pie:scsk_0"})
+	minetest.register_craft({
+		output = "pie:scsk_0",
+		recipe = {
+			{"group:food_strawberry", "group:food_cream", "group:food_strawberry"},
+			{"group:food_sugar", "group:food_egg", "group:food_sugar"},
+			{"group:food_wheat", "group:food_flour", "group:food_wheat"}
+		},
 	})
 end

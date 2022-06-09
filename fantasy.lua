@@ -139,7 +139,7 @@ for k, v in pairs(fantasy_cheeses) do
 			description = S(""..v[1]:gsub("_", " "):gsub("(%a)(%a+)", function(a, b) return string.upper(a) .. string.lower(b) end) ),
 			inventory_image = v[1]..".png",
 			on_use = use,
-			groups = {food = 4, food_cheese = 1, food_fantasy_cheese = 1, not_in_creative_inventory = 1},
+			groups = {food = 4, food_cheese = 1, food_fantasy_cheese = 1},
 		})
 	--[[
 	if cheese.ui then

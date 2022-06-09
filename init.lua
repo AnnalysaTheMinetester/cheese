@@ -7,10 +7,14 @@ cheese.ui = minetest.get_modpath("unified_inventory") ~= nil
 cheese.i3 = minetest.get_modpath("i3") ~= nil
 cheese.astral = minetest.get_modpath("astral") ~= nil
 cheese.farming = (minetest.global_exists("farming") and farming.mod == "redo")
+cheese.ethereal = minetest.get_modpath("ethereal")
 cheese.moretrees =  minetest.get_modpath("moretrees") ~= nil
 cheese.cv = minetest.get_modpath("cucina_vegana") ~= nil
 cheese.mana = minetest.get_modpath("mana") ~= nil
 cheese.playereffects = minetest.get_modpath("playereffects") ~= nil
+cheese.there_is_milk = minetest.get_modpath("mobs_animal") or
+                       minetest.get_modpath("petz") or
+                       minetest.get_modpath("animalia")
 
 local S
 if(minetest.get_translator) then
@@ -24,7 +28,7 @@ local path = minetest.get_modpath(minetest.get_current_modname()) .. "/"
 
 local craft_type_table = {
 	-- type name,					description,				icon
-	{"cauldron_boiling", S("Cauldron Boiling"), "milk_cauldron_active_side.png"},
+	{"cauldron_boiling", S("Boiling"), "milk_cauldron_active_side.png"},
 	{"cheese_rack_aging", S("Cheese Rack Aging"), "default_wood.png^cheese_front.png"},
 	{"churning", S("Churning"), "churn.png"},
 	{"centrifugation", S("Centrifugation"), "cream_separator_front.png"},

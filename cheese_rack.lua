@@ -16,7 +16,7 @@ local producable = { --remember, only cow milk
 	["mossy"] 	= {"gorgonzola",	"stilton",			"brie", 	"stracchino"}, 	-- short time, soft and creamy
 }
 
--- sheep cheese (cant make them): feta, pecorino
+-- sheep cheese (cant make them): feta, pecorino, queso?
 -- also cheese + nuts, chilly, herbs, olives ??
 
 -- the process is called cheese ripening, maturation of affinage (or simplified, aging)

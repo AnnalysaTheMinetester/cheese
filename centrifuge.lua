@@ -1,9 +1,20 @@
 local S = cheese.S
 
-local creamable = {
-	{"group:food_milk",			"cheese:milk_cream 3"},
-	{"cheese:whey",				"cheese:milk_cream"},
-}
+local creamable = {}
+
+if cheese.there_is_milk then
+	minetest.register_craftitem("cheese:milk_cream", {
+		description = S("Milk Cream"),
+		inventory_image = "milk_cream.png",
+		groups = {milk_product = 1, food_cream = 1},
+	})
+	if minetest.registered_items["mobs:wooden_bucket_milk"] then
+		table.insert(creamable, {"mobs:wooden_bucket_milk", "cheese:milk_cream 3"})
+	end
+	table.insert(creamable, {"group:food_milk",	"cheese:milk_cream 3"})
+	table.insert(creamable, {"cheese:whey",			"cheese:milk_cream"  })
+end
+
 if cheese.moretrees then
 	minetest.register_craftitem("cheese:coconut_cream", {
 		description = S("Coconut Cream"),
@@ -16,7 +27,7 @@ if cheese.moretrees then
 
 	table.insert(creamable, {"moretrees:coconut_milk",	"cheese:coconut_cream 2"})
 else
-	if minetest.get_modpath("ethereal") then
+	if cheese.ethereal then
 		minetest.register_craftitem("cheese:coconut_cream", {
 			description = S("Coconut Cream"),
 			inventory_image = "coconut_cream.png",
@@ -38,6 +49,17 @@ else
 		})
 		table.insert(creamable, {"cheese:coconut_milk",	"cheese:coconut_cream 2"})
 	end
+end
+
+if creamable[1] == nil then
+	-- register a default alternative to still get access to cream, and consequently, butter
+	minetest.register_craftitem("cheese:cactus_cream", {
+		description = S("Cactus Cream"),
+		inventory_image = "coconut_cream.png^[colorize:green:30",
+		groups = {food_cream = 1, vegan_alternative = 1, food_vegan = 1},
+	})
+	--definition of bucket_cactus is in fantasy.lua
+	table.insert(creamable, {"cheese:bucket_cactus",	"cheese:cactus_cream 2"})
 end
 
 for k, v in pairs(creamable) do
@@ -71,7 +93,9 @@ end
 local function should_return (item_name)
 	if item_name == "moretrees:coconut_milk" or item_name == "cheese:coconut_milk" then
 		return "vessels:drinking_glass"
-	elseif minetest.get_item_group( item_name , "food_milk") then
+	elseif item_name == "mobs:wooden_bucket_milk" then
+		return "wooden_bucket:bucket_wood_empty"
+	elseif minetest.get_item_group( item_name , "food_milk") or item_name == "cheese:bucket_cactus" then
 		return "bucket:bucket_empty"
 	end
 	return "no"
