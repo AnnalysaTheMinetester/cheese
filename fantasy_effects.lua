@@ -55,12 +55,14 @@ playereffects.register_effect_type("burden", S("Burden"), "burden.png", {"jump"}
 	end
 )
 
-playereffects.register_effect_type("chill_fall", S("Chill Fall"), "chill_fall.png", {"gravity"},
+playereffects.register_effect_type("breeze", S("Breeze"), "breeze.png", {"gravity", "speed"},
 	function(player)
 		add_physic(player, "gravity", 0.7)
+		add_physic(player, "speed", 1.1)
 	end,
 	function(effect, player)
 		remove_physic(player, "gravity")
+		remove_physic(player, "speed")
 	end
 )
 

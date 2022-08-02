@@ -9,7 +9,7 @@ if cheese.there_is_milk then
 		groups = {milk_product = 1, food_butter = 1},
 	})
 	if minetest.registered_items["mobs:wooden_bucket_milk"] then
-		table.insert(creamable, {"mobs:wooden_bucket_milk", "cheese:butter"})
+		table.insert(churnable, {"mobs:wooden_bucket_milk", "cheese:butter"})
 	end
 	table.insert(churnable, {"group:food_milk", 	"cheese:butter"		} )
 	table.insert(churnable, {"cheese:milk_cream", "cheese:butter 2" } )

@@ -368,3 +368,44 @@ if minetest.get_modpath("pie") then
 		},
 	})
 end
+
+if cheese.ethereal then
+	minetest.register_craftitem("cheese:seaweed_water_bucket", {
+		description = S("Seaweed in a Water Bucket"),
+		inventory_image = "seaweed_water_bucket.png",
+		groups = { bucket = 1 },
+	})
+
+	minetest.register_craft({
+		output = "cheese:seaweed_water_bucket",
+		type = "shapeless",
+		recipe = {"ethereal:seaweed", "ethereal:seaweed", "ethereal:seaweed", "bucket:bucket_water"	},
+	})
+
+	minetest.clear_craft({output = "ethereal:agar_powder"})
+end
+
+if minetest.get_modpath("bonemeal") or minetest.get_modpath("petz") then
+	minetest.register_craftitem("cheese:bones_water_bucket", {
+		description = S("Bones in a Water Bucket"),
+		inventory_image = "bones_water_bucket.png",
+		groups = { bucket = 1 },
+	})
+
+	minetest.register_craft({
+		output = "cheese:bones_water_bucket",
+		type = "shapeless",
+		recipe = {"group:bone", "group:bone", "group:bone", "bucket:bucket_water"	},
+	})
+
+	if minetest.registered_items["bonemeal:gelatin_powder"] then
+		minetest.clear_craft({output = "bonemeal:gelatin_powder"})
+	else
+		minetest.register_craftitem("cheese:bone_gelatin", {
+			description = S("Gelatin"),
+			inventory_image = "bone_gelatin.png",
+			groups = { food_gelatin = 1 },
+		})
+	end
+
+end

@@ -24,8 +24,10 @@ To make a mouse jealous.=
 
 ### centrifuge.lua ###
 
+Milk Cream=
 Coconut Cream=
 Coconut Milk=
+Cactus Cream=
 Cream Separator=
 Makes cream from milk or whey.=
 
@@ -37,6 +39,7 @@ Mossy Cheese Rack=
 
 ### churn.lua ###
 
+Butter=
 Churn=
 Makes butter from milk, or milk cream.=
 Nut Oil=
@@ -64,7 +67,7 @@ You used 10 mana points.=
 ### fantasy_effects.lua ###
 
 Burden=
-Chill Fall=
+Breeze=
 Haste=
 Impetus=
 Major Regen=
@@ -81,7 +84,7 @@ Vegan Ice Cream=
 
 ### init.lua ###
 
-Cauldron Boiling=
+Boiling=
 Centrifugation=
 Cheese Rack Aging=
 Churning=
@@ -101,19 +104,21 @@ Stilton=
 Brie=
 Stracchino=
 
-Butter=
 Caciocavallo=
 Curd=
 Fondue=
 Fresh Caciocavallo=
 Fruit Tonic=
-Milk Cream=
 Mozzarella=
 Ricotta=
 Scamorza=
 Smoked Scamorza=
 Stretched Cheese=
 Whey=
+
+Seaweed in a Water Bucket=
+Bones in a Water Bucket=
+Gelatin=
 
 ### milk_cauldron.lua ###
 

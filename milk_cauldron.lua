@@ -121,6 +121,21 @@ end
 table.insert(allowed_recipes,
 {bc, "cheese:desert_delicacy", nil, "bucket:bucket_empty", 22 } )
 
+if cheese.ethereal then
+  table.insert(allowed_recipes,
+  {"cheese:seaweed_water_bucket", "ethereal:agar_powder 2", nil, "bucket:bucket_empty", 8 } )
+end
+
+if minetest.get_modpath("bonemeal") then
+  table.insert(allowed_recipes,
+  {"cheese:bones_water_bucket", "bonemeal:gelatin_powder 2", nil, "bucket:bucket_empty", 8 } )
+
+elseif minetest.registered_items["cheese:bone_gelatin"] then -- no bonemeal, but petz is present
+  table.insert(allowed_recipes,
+  {"cheese:bones_water_bucket", "cheese:bone_gelatin 2", nil, "bucket:bucket_empty", 8 } )
+
+end
+
 for k,v in pairs(allowed_recipes) do
   if cheese.ui then
       unified_inventory.register_craft({

@@ -12,6 +12,9 @@ local fantasy_cheeses = {
 	{"sparkling_cheese",	"cheese:curd", 10, "manaregen"},
 }
 local gelatin = ""
+if minetest.get_modpath("petz") then
+	gelatin = "group:food_gelatin"
+end
 
 local juicer = ""
 if cheese.farming then
@@ -39,9 +42,9 @@ if minetest.get_modpath("ethereal") == nil then
 	table.insert(fantasy_cheeses, {"desert_delicacy",			"cheese:bucket_cactus", 0, "regen"})
 else
 	table.insert(fantasy_cheeses, {"desert_delicacy",			"ethereal:bucket_cactus", 0, "regen", "snailing"})
-	table.insert(fantasy_cheeses, {"blazing_exquisitess",	"ethereal:firethorn_jelly", 20, "haste", "impetus"})
-	table.insert(fantasy_cheeses, {"frosted_tomme",				"cheese:frosted_spume", 20, "chill_fall", "impetus"})
-	table.insert(fantasy_cheeses, {"shining_formage",			"cheese:shining_spume", 20, "regenm"})
+	table.insert(fantasy_cheeses, {"blazing_exquisitess",	"ethereal:firethorn_jelly", 10, "haste", "impetus"})
+	table.insert(fantasy_cheeses, {"frosted_tomme",				"cheese:frosted_spume", 20, "breeze",})
+	table.insert(fantasy_cheeses, {"shining_formage",			"cheese:shining_spume", 10, "regenm"})
 
 	gelatin = "group:food_gelatin"
 
@@ -49,7 +52,7 @@ else
 		description = S("Shining Spume"),
 		inventory_image = "shining_spume.png",
 		groups = {bucket = 1},
-		--light_source = 9
+		light_source = 9,
 	})
 	minetest.register_craft({
 		output = "cheese:shining_spume",
@@ -65,6 +68,7 @@ else
 		description = S("Frosted Spume"),
 		inventory_image = "frosted_spume.png",
 		groups = {bucket = 1},
+		light_source = 7,
 	})
 	minetest.register_craft({
 		output = "cheese:frosted_spume",

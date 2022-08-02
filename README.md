@@ -34,7 +34,7 @@ There are a total of 12 different cheese types that you can acquire, through the
 placed in a dark spot. There are 3 types of Cheese Rack, *Wooden*, *Stone* and *Mossy*, each with
 their aging time, giving you a few pieces of one random type of the 4 assigned to that Rack.
 So if you want a particular cheese, you need to have the right Rack.
-If you have the mod [astral] installed, there will be differences upon harvesting the aged cheese,
+If you have the mod [astral]((https://content.minetest.net/packages/cronvel/astral/)) installed, there will be differences upon harvesting the aged cheese,
 if a certain moon or sun event is happening.
 You can still normally cook *Curd* to get a "default" cheese (for example mobs:cheese)
 and *Whey* into *Ricotta* (You can boil it in the *Milk Cauldron* too).
@@ -63,11 +63,11 @@ or *Cream* to get 3.
 ### Ice Cream
 Yes. There is *Ice Cream* too! You can craft a base using milk, *Cream*, sugar and snow.
 Currently there isnt much to do with it except *Neapolitan Ice Cream*, but if you
-have the [icecream] mod installed, the recipes will now use this new base.
+have the [icecream](https://content.minetest.net/packages/Can202/icecream/) mod installed, the recipes will now use this new base.
 
 ### Veg Alternatives
 Why? Why not! I wanted to include more people, so this mod can be used by dairy-free people too!
-if you have the [moretrees] mod, or the [ethereal] mod, you can make *Coconut Cream*
+if you have the [moretrees](https://content.minetest.net/packages/VanessaE/moretrees/) mod, or the [ethereal](https://content.minetest.net/packages/TenPlus1/ethereal/) mod, you can make *Coconut Cream*
 with coconut milk usign the *Cream Separator*, *Vegetable Butter* by using the *Churn*
 with *Vegetable Butter Preparation*, crafted with *Coconut Cream*, oil and vegetable
 milk, and *Vegan Ice Cream* crafting together vegetable milk, *Coconut Cream*, sugar and snow.
@@ -75,9 +75,9 @@ milk, and *Vegan Ice Cream* crafting together vegetable milk, *Coconut Cream*, s
 ### Fantasy Cheeses
 Yes, you read that right. There is a fourth Rack type: *Obsidian*. You can use *Curd*
 or ... other items, each giving you a specific type of cheese, so this isn't random.
-I'll let you find out how to use it, but you'll need [ethereal] mod for most cheeses.
-Its behaviour changes if you again have [astral] and [mana] mod installed. There is a change to [moobloom] too.
-Eating each fantasy cheese will give you a special effect if you have the [playereffects] mod installed.
+I'll let you find out how to use it, but you'll need [ethereal](https://content.minetest.net/packages/TenPlus1/ethereal/) mod for most cheeses.
+Its behaviour changes if you again have [astral](https://content.minetest.net/packages/cronvel/astral/) and [mana](https://content.minetest.net/packages/Wuzzy/mana/) mod installed. There is a change to [flower_cow](https://content.minetest.net/packages/DrPlamsa/flower_cow/) too.
+Eating each fantasy cheese will give you a special effect if you have the [playereffects](https://content.minetest.net/packages/Wuzzy/playereffects/) mod and the [mana](https://content.minetest.net/packages/Wuzzy/mana/) installed.
 (The effects still need to be worked on, they are not perfect).
 
 ### License

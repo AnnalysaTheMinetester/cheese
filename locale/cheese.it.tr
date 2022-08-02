@@ -24,8 +24,10 @@ To make a mouse jealous.=Far un topo geloso.
 
 ### centrifuge.lua ###
 
+Milk Cream=Panna di Latte
 Coconut Cream=Panna di Cocco
 Coconut Milk=Latte di Cocco
+Cactus Cream=Panna di Cactus
 Cream Separator=Separatore di Crema
 Makes cream from milk or whey.=Fai crema da latte o siero.
 
@@ -37,6 +39,7 @@ Mossy Cheese Rack=Scaffale Muschioso per Formaggio
 
 ### churn.lua ###
 
+Butter=Burro
 Churn=Zangola
 Makes butter from milk, or milk cream.=Fa burro dal latte, o panna.
 Nut Oil=Olio di Noci
@@ -64,7 +67,7 @@ You used 10 mana points.=Hai usato 10 punti di mana.
 ### fantasy_effects.lua ###
 
 Burden=Carico
-Chill Fall=Fresca Caduta
+Breeze=Brezza
 Haste=Alacrità
 Impetus=Impeto
 Major Regen=Regen Maggiore
@@ -81,7 +84,7 @@ Vegan Ice Cream=Gelato Vegano
 
 ### init.lua ###
 
-Cauldron Boiling=Bollire col Calderone
+Boiling=Bollire
 Centrifugation=Centrifugazione
 Cheese Rack Aging=Stagionatura nello Scaffale
 Churning=Usare la Zangola
@@ -101,19 +104,22 @@ Stilton=Stilton
 Brie=Brie
 Stracchino=Stracchino
 
-Butter=Burro
 Caciocavallo=Caciocavallo
 Curd=Cagliata
 Fondue=Fonduta
 Fresh Caciocavallo=Caciocavallo Fresco
 Fruit Tonic=Tonico Fruttato
-Milk Cream=Panna di Latte
 Mozzarella=Mozzarella
 Ricotta=Ricotta
 Scamorza=Scamorza
 Smoked Scamorza=Scamorza Affumicata
 Stretched Cheese=Pasta Filata
 Whey=Siero di Latte
+
+
+Seaweed in a Water Bucket=Alghe in Secchio d'Acqua
+Bones in a Water Bucket=Ossa in Secchio d'Acqua
+Gelatin=Gelatina
 
 ### milk_cauldron.lua ###
 
