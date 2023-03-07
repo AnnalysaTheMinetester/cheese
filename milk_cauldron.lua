@@ -544,7 +544,7 @@ local function cauldron_node_timer(pos, elapsed)
   local remaining_inputs = get_stack_count(srcslotslist, src_slot_size) --------
   local slot_state
   if srcslotslist and remaining_inputs > 0 then
-    slot_state = remaining_inputs .. S(" Stacks in Input Slots")
+    slot_state = remaining_inputs .. " " .. S("Stacks in Input Slots")
   else
     slot_state = S("Input Slot Empty")
   end

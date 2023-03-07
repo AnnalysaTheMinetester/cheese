@@ -28,7 +28,7 @@ Normal fuel slot, nothing to add here. Enjoy boiling! ;)
 
 ### Cheese Aging
 Now, did you expect cheese to come out of that cauldron? Well, nope.
-Milk boils into two things, *Curd* with is the solid part, and *Whey* which is the liquid part.
+Milk boils into two things, *Curd* which is the solid part, and *Whey* which is the liquid part.
 Cheese is essentially aged curd, but where to start this process? In a *Cheese Aging Rack*!
 There are a total of 12 different cheese types that you can acquire, through the use of Racks,
 placed in a dark spot. There are 3 types of Cheese Rack, *Wooden*, *Stone* and *Mossy*, each with
@@ -81,7 +81,7 @@ Eating each fantasy cheese will give you a special effect if you have the [playe
 (The effects still need to be worked on, they are not perfect).
 
 ### License
-Code and Textures by Annalysa, GLGP LICENSE v2.1 for code, CC-BY-SA 3.0 UNPORTED for textures.
+Code and Textures by Annalysa, LGPL LICENSE v2.1 for code, CC-BY-SA 3.0 UNPORTED for textures.
 Sounds are CC0.
 
 ##### Italian traslation available

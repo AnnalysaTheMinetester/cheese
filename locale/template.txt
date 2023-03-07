@@ -122,7 +122,7 @@ Gelatin=
 
 ### milk_cauldron.lua ###
 
- Stacks in Input Slots=
+Stacks in Input Slots=
 Empty=
 Input Slot Empty=
 Milk Cauldron=
