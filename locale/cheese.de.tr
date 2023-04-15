@@ -1,0 +1,134 @@
+# textdomain: cheese
+
+
+### awards.lua ###
+
+Almost a pizza.=Fast eine Pizza.
+Cheese!=Käse!
+Craft Stretched Cheese, then shape it to get Mozzarella. If only you had tomato sauce and dough ...=Fertige gestreckten Käse, dann forme ihn zu Mozzarella. Wenn du nur Tomatensauce und Teig hast ..
+Craft Stretched Cheese, then shape it to get a caciocavallo and let it age, by hanging it at the ceiling.=Fertige gestreckten Käse, dann forme ihn zu Caciacavallokäse und lass ihn reifen, indem du ihn an die Decke hängst.
+Cream, Sweet Cream!= Creme, süsse Creme!
+Eat 50 pieces of cheese.=Iss 50 Stück Käse.
+Eat a piece of cheese.=Iss ein Stück Käse.
+Eat a piece of special cheese.=Iss ein Stück besonderen Käse.
+Golden Butter.=Goldene Butter.
+How? Why? Who cares!@nMore Cheese!=Wie? Warum? Wem störts!@nMehr Käse!
+I need to hang this?!=Ich muß das aufhängen?
+Place a Cheese Aging Rack.=Gib den Käse ins Reifungsregal.
+Place a Churn.=Stelle ein Butterfass auf.
+Place a Copper Cauldron. You can use it to boil milk.=Stelle einen Kupferkessel auf. Du kannst ihn zum Erhitzen von Milch benutzen.
+Place a Cream Separator.=Stelle einen Rahmabscheider auf.
+Ready. Set. Cheese!=Bereit. Aufgestellt. Käse!
+The Milky Way.=Die Milchstraße.
+To make a mouse jealous.=Um Mäuse eifersüchtig zu machen.
+
+### centrifuge.lua ###
+
+Milk Cream=Milchcreme
+Coconut Cream=Kokosnuß Creme
+Coconut Milk=Kokosmilch
+Cactus Cream=Kaktus Creme
+Cream Separator=Rahmabscheider
+Makes cream from milk or whey.=Macht Sahne aus Milch oder Molke.
+
+### cheese_rack.lua ###
+
+Wooden Cheese Rack=Hölzernes Käseregal.
+Stone Cheese Rack=Steinernes Käseregal.
+Mossy Cheese Rack=Moosbewachsenes Käseregal.
+
+### churn.lua ###
+
+Butter=Butter
+Churn=Butterfass
+Makes butter from milk, or milk cream.=Macht Butter aus Milch, oder Milchschaum.
+Nut Oil=Nussöl
+Vegetable Butter=Vegetarische Butter
+Vegetable Butter Preparation=Fertigung pflanzlicher Butter.
+
+### fantasy.lua ###
+
+Obsidian Cheese Rack=Obsidian Käseregal
+
+Sparkling Cheese=Prickelnder Käse
+Rose Ambrosia=Rosen-Ambrosia
+Desert Delicacy=Wüsten-Delikatesse
+Blazing Exquisitess=Glühende Exquisitheit
+Frosted Tomme=Gekühlter Tomme
+Shining Formage=Leuchtender Käse
+
+Breezing Spume=Brisante Gischt
+Bucket of Cactus Pulp=Eimer Kaktuspulp
+Noxious Cheddar=Schädlicher Cheddar
+Shining Spume=Leuchtene Gischt
+You dont have enough mana to use the obsidian shelf.=Du hast nicht genügend Mana um das Obsidan-Regal zu verwenden.
+You used 10 mana points.=Du hast 10 Manapunkte verbraucht.
+
+### fantasy_effects.lua ###
+
+Burden=Belastend
+Breeze=Hauch
+Haste=Eilend
+Impetus=Pulsierend
+Major Regen=Große Regeneration
+Mana Regen=Manaregeneration
+Miasma=Verunreinigend
+Regen=Regeneration
+Snailing=Schnecke
+
+### ice_cream.lua ###
+
+Ice Cream=Eiscreme
+Neapolitan Ice Cream=Neapel Eiscreme
+Vegan Ice Cream=Vegetarische Eiscreme
+
+### init.lua ###
+
+Boiling=Kochend
+Centrifugation=Zentrifugierend
+Cheese Rack Aging=Käseregal reifend
+Churning=Buttergefasst
+
+### items.lua ###
+
+Parmesan=Parmesan
+Fontal=Fontal
+Gruyere=Greyerzer
+Emmental=Emmentaler
+Monteray Jack=Monteray Jack
+Asiago=Asiate
+Toma=Tome
+Gouda=Gauda
+Gorgonzola=Gorgonzola
+Stilton=Stilton
+Brie=Brie
+Stracchino=Stracchino
+
+Caciocavallo=Caciocavallo
+Curd=Quark
+Fondue=Fondue
+Fresh Caciocavallo=Frischer Caciocavallo
+Fruit Tonic=Fruchttonic
+Mozzarella=Mozzarella
+Ricotta=Ricotta
+Scamorza=Scamorza
+Smoked Scamorza=Geräuchterter Scamorza
+Stretched Cheese=Gestreckter Käse
+Whey=Molke
+
+Seaweed in a Water Bucket=Seegras in einem Wassereimer
+Bones in a Water Bucket=Knochen in einem Wassereimer
+Gelatin=Gelatine
+
+### milk_cauldron.lua ###
+
+Stacks in Input Slots=Stapel im Eingabeslot
+Empty=Leer
+Input Slot Empty=Leerer Eingabeslot
+Milk Cauldron=Milchkessel
+Cauldron boiling=Kochkessel
+Cauldron inactive=Kessel inaktiv
+Cauldron is empty=Kessel ist leer
+No Fuel=Kein Brennstoff
+Cannot be boiled=Kann nicht gekocht werden
+Salt=Salz
