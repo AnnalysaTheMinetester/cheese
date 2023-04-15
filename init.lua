@@ -15,6 +15,7 @@ cheese.playereffects = minetest.get_modpath("playereffects") ~= nil
 cheese.there_is_milk = minetest.get_modpath("mobs_animal") or
                        minetest.get_modpath("petz") or
                        minetest.get_modpath("animalia")
+cheese.hg_ng = minetest.get_modpath("hunger_ng") ~= nil
 
 local S
 if(minetest.get_translator) then

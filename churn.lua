@@ -120,6 +120,7 @@ minetest.register_node("cheese:churn", {
 		"churn.png"
 	},
 	drawtype = "nodebox",
+	use_texture_alpha = "clip",
 	paramtype = "light",
 	node_box = {
 		type = "fixed",

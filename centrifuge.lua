@@ -41,6 +41,9 @@ else
 			on_use = minetest.item_eat(2, "vessels:drinking_glass"),
 			groups = {vessel = 1, food_coconut_milk = 1},
 		})
+		if cheese.hunger_ng then
+			hunger_ng.add_hunger_data("cheese:coconut_milk", { satiates = 2, heals = 0, returns = "vessels:drinking_glass", timeout = 0 })
+		end
 
 		minetest.register_craft({
 			type = "shapeless",
@@ -112,6 +115,7 @@ minetest.register_node("cheese:cream_separator", {
 		"cream_separator_front.png"
 	},
 	drawtype = "nodebox",
+	use_texture_alpha = "clip",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky = 1, attached_node = 1},

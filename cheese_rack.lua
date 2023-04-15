@@ -90,7 +90,7 @@ local cheese_rack_with_aging_cheese = {
 		"default_wood.png^fresh_cheese_front.png"
 	},
 	drawtype = "nodebox",
-	paramtype = "light",
+	--paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {choppy=2},
 	sounds = default.node_sound_wood_defaults(),

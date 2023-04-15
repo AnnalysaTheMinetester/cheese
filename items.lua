@@ -100,6 +100,10 @@ for k, v in pairs(cheese.aged_cheeses) do
 			result = "cheese:"..v
 		})
 	end
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:"..v , { satiates = 2, heals = 0, timeout = 0 })
+	end
+
 end
 
 -- curd + curd + curd + water bucket + salt = pasta filata -> mozzarella caciocavallo scamorza
@@ -153,6 +157,7 @@ minetest.register_node("cheese:fresh_caciocavallo", {
 		"fresh_caciocavallo_front.png"
 	},
 	drawtype = "nodebox",
+	use_texture_alpha = "clip",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {oddly_breakable_by_hand = 3},
@@ -237,6 +242,7 @@ minetest.register_node("cheese:caciocavallo", {
 		"caciocavallo_front.png"
 	},
 	drawtype = "nodebox",
+	use_texture_alpha = "clip",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {food = 8, food_cheese = 1, oddly_breakable_by_hand = 3},
@@ -333,6 +339,9 @@ if cheese.ethereal and cheese.farming then
 			{"vessels:glass_bottle", "cheese:whey", "vessels:glass_bottle"},
 		},
 	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:fruit_tonic", { satiates = 8, heals = 2, returns = "vessels:glass_bottle", timeout = 1 })
+	end
 end -- if ingredients are present, apple:default, grapes:farming, orange:ethereal
 
 if cheese.farming then
@@ -408,4 +417,13 @@ if minetest.get_modpath("bonemeal") or minetest.get_modpath("petz") then
 		})
 	end
 
+end
+
+if cheese.hunger_ng then
+	hunger_ng.add_hunger_data("cheese:ricotta", { satiates = 5, heals = 0, timeout = 0 })
+	hunger_ng.add_hunger_data("cheese:mozzarella", { satiates = 4, heals = 0, timeout = 0 })
+	hunger_ng.add_hunger_data("cheese:caciocavallo", { satiates = 8, heals = 0, timeout = 0 })
+	hunger_ng.add_hunger_data("cheese:scamorza", { satiates = 4, heals = 0, timeout = 0 })
+	hunger_ng.add_hunger_data("cheese:smoked_scamorza", { satiates = 7, heals = 0, timeout = 0 })
+	hunger_ng.add_hunger_data("cheese:fondue", { satiates = 8, heals = 1, returns = "default:copper_ingot 3", timeout = 0 })
 end

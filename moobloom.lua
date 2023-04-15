@@ -60,3 +60,6 @@ minetest.register_craftitem("cheese:bucket_blooming_essence", {
 	on_use = minetest.item_eat(4, "bucket:bucket_empty"),
 	groups = {food = 4},
 })
+if cheese.hunger_ng then
+	hunger_ng.add_hunger_data("cheese:bucket_blooming_essence", { satiates = 4, heals = 0, returns = "bucket:bucket_empty", timeout = 0 })
+end

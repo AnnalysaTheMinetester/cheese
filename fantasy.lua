@@ -32,6 +32,9 @@ if minetest.get_modpath("ethereal") == nil then
 		groups = {vessel = 1, drink = 1},
 		on_use = minetest.item_eat(2, "bucket:bucket_empty"),
 	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:bucket_cactus", { satiates = 2, heals = 0, returns = "bucket:bucket_empty", timeout = 0 })
+	end
 
 	minetest.register_craft({
 		output = "cheese:bucket_cactus",
@@ -115,7 +118,9 @@ for k, v in pairs(fantasy_cheeses) do
 				if v[4] then playereffects.apply_effect_type(v[4], 20, player) end
 				if v[5] then playereffects.apply_effect_type(v[5], 20, player) end
 				if v[1] == "shining_formage" then heal(player,8)
-				elseif v[1] == "rose_ambrosia" then cleanse(player)
+				elseif v[1] == "rose_ambrosia" then
+					heal(player,4)
+					cleanse(player)
 				end
 				return minetest.do_item_eat(4, nil, itemstack, player, pointed_thing)
 			end
@@ -126,7 +131,7 @@ for k, v in pairs(fantasy_cheeses) do
 					else mana.subtract_up_to(player:get_player_name(), -v[3])
 					end
 					if v[1] == "shining_formage" then heal(player,8)
-					elseif v[1] == "rose_ambrosia" then cleanse(player)
+					elseif v[1] == "rose_ambrosia" then heal(player,4)
 					end
 					return minetest.do_item_eat(4, nil, itemstack, player, pointed_thing)
 			end
@@ -134,17 +139,26 @@ for k, v in pairs(fantasy_cheeses) do
 	else
 		use = function(itemstack, player, pointed_thing)
 			if v[1] == "shining_formage" then heal(player,8)
-			elseif v[1] == "rose_ambrosia" then cleanse(player)
+			elseif v[1] == "rose_ambrosia" then heal(player,4)
 			end
 			return minetest.do_item_eat(4, nil, itemstack, player, pointed_thing)
 		end
 	end
+
+	local ng_heal = 0
+	if v[1] == "shining_formage" then hg_heal = 8
+	elseif v[1] == "rose_ambrosia" then hg_heal = 4
+	end
+
 	minetest.register_craftitem("cheese:"..v[1], {
-			description = S(""..v[1]:gsub("_", " "):gsub("(%a)(%a+)", function(a, b) return string.upper(a) .. string.lower(b) end) ),
-			inventory_image = v[1]..".png",
-			on_use = use,
-			groups = {food = 4, food_cheese = 1, food_fantasy_cheese = 1},
-		})
+		description = S(""..v[1]:gsub("_", " "):gsub("(%a)(%a+)", function(a, b) return string.upper(a) .. string.lower(b) end) ),
+		inventory_image = v[1]..".png",
+		on_use = use,
+		groups = {food = 4, food_cheese = 1, food_fantasy_cheese = 1},
+	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:"..v[1], { satiates = 4, heals = ng_heal, timeout = 1 })
+	end
 	--[[
 	if cheese.ui then
 		unified_inventory.register_craft({
@@ -207,6 +221,9 @@ if cheese.astral then
 		end,
 		groups = {food = 5, not_in_creative_inventory = 1, food_cheese = 1},
 	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:", { satiates = 5, heals = 0, timeout = 0 })
+	end
 end
 
 local function get_fantasy_cheese( aged_product )

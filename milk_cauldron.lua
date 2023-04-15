@@ -609,6 +609,7 @@ end
 minetest.register_node("cheese:milk_cauldron", {
 	description = S("Milk Cauldron"),
   drawtype = "nodebox",
+	use_texture_alpha = "clip",
   --mesh = "kettle_idle.obj",
   tiles = {
     "milk_cauldron_top.png",
@@ -671,6 +672,7 @@ minetest.register_node("cheese:milk_cauldron", {
 minetest.register_node("cheese:milk_cauldron_active", {
 	description = S("Milk Cauldron"),
   drawtype = "nodebox",
+	use_texture_alpha = "clip",
   --mesh = "kettle_inuse.obj",
 	tiles = {
     {

@@ -13,6 +13,9 @@ if cheese.there_is_milk then
 		recipe = {"group:food_milk", "cheese:milk_cream", "cheese:milk_cream", "group:food_sugar", "default:snow"},
 		replacements = {{"group:food_milk", "bucket:bucket_empty"}},
 	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:ice_cream_base", { satiates = 3, heals = 0, timeout = 0 })
+	end
 end
 
 if cheese.moretrees or cheese.ethereal then
@@ -22,6 +25,9 @@ if cheese.moretrees or cheese.ethereal then
 		on_use = minetest.item_eat(3),
 		groups = {vegan_alternative = 1, food = 5, food_icecream = 1, food_icecream_base = 1},
 	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:vegan_ice_cream_base", { satiates = 3, heals = 0, timeout = 0 })
+	end
 	if cheese.cv then
 		minetest.register_craft({
 			type = "shapeless",
@@ -81,6 +87,9 @@ if cheese.farming and (minetest.registered_items["cheese:ice_cream_base"] or
 		on_use = minetest.item_eat(11),
 		groups = {food = 11, food_icecream = 1},
 	})
+	if cheese.hunger_ng then
+		hunger_ng.add_hunger_data("cheese:neapolitan_ice_cream", { satiates = 11, heals = 2, timeout = 2 })
+	end
 
 	minetest.register_craft({
 		output = "cheese:neapolitan_ice_cream 3",
@@ -118,6 +127,10 @@ if cheese.farming and (minetest.registered_items["cheese:ice_cream_base"] or
 				{"", "group:food_banana", ""},
 			},
 		})
+		if cheese.hunger_ng then
+			hunger_ng.add_hunger_data("cheese:banana_split", { satiates = 15, heals = 3, timeout = 3 })
+		end
+
 	end -- if ethereal or cucina_vegana, where bananas are from
 
 end
