@@ -66,7 +66,7 @@ if cheese.farming and (minetest.registered_items["cheese:ice_cream_base"] or
 			{"vanilla", 	"farming:vanilla"},
 			{"mint", 		"farming:mint_leaf"},
 		}
-		for k,v in pairs(ingredients) do
+		for _,v in pairs(ingredients) do
 			minetest.clear_craft({output = "icecream:"..v[1]})
 
 			minetest.register_craft({

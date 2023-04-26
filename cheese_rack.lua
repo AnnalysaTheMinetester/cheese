@@ -247,7 +247,6 @@ for k, v in pairs(rack_types) do
 			else
 				minetest.add_item(player:get_pos(), given)
 			end
-			local node = minetest.get_node(pos)
 			minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_empty", param2 = node.param2})
 		end
 	end

@@ -65,7 +65,7 @@ if creamable[1] == nil then
 	table.insert(creamable, {"cheese:bucket_cactus",	"cheese:cactus_cream 2"})
 end
 
-for k, v in pairs(creamable) do
+for _, v in pairs(creamable) do
 	if cheese.ui then
 		unified_inventory.register_craft({
 			type = "centrifugation",
@@ -83,7 +83,7 @@ for k, v in pairs(creamable) do
 end -- for
 
 local function is_accettable_source(item_name)
-	for k, v in pairs(creamable) do
+	for _, v in pairs(creamable) do
 		if item_name == v[1]  then
 			return true, v[2]
 		elseif minetest.get_item_group( item_name , "food_milk" ) > 0 and minetest.get_item_group( item_name , "food_vegan" ) == 0 then --same as the churn
@@ -167,7 +167,7 @@ minetest.register_node("cheese:cream_separator", {
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then
-					leftover = inv:add_item("main", given)
+					local leftover = inv:add_item("main", given)
 					itemstack:take_item()
 					if not leftover:is_empty() then
 						minetest.add_item(player:get_pos(), leftover)

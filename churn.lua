@@ -164,7 +164,7 @@ minetest.register_node("cheese:churn", {
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then
-					leftover = inv:add_item("main", given)
+					local leftover = inv:add_item("main", given)
 					itemstack:take_item()
 					if not leftover:is_empty() then
 						minetest.add_item(player:get_pos(), leftover)
