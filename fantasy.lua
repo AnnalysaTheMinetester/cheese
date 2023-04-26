@@ -95,13 +95,14 @@ local heal = function(player, value)
 	end
 end
 local cleanse = function(player)
-	local status = playereffects.get_player_effects(player:get_player_name())
-	for i=1, #status do
-		if status[i].effect_type_id == "snailing" or status[i].effect_type_id == "burden" or status[i].effect_type_id == "miasma" then
-			playereffects.cancel_effect(status[i].effect_id)
+	if cheese.playereffects then
+		local status = playereffects.get_player_effects(player:get_player_name())
+		for i=1, #status do
+			if status[i].effect_type_id == "snailing" or status[i].effect_type_id == "burden" or status[i].effect_type_id == "miasma" then
+				playereffects.cancel_effect(status[i].effect_id)
+			end
 		end
 	end
-
 end
 
 for k, v in pairs(fantasy_cheeses) do
