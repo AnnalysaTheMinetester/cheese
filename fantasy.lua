@@ -406,7 +406,7 @@ for k, v in pairs(rack_types) do
 					minetest.chat_send_player(player:get_player_name(), S("You used 10 mana points."))
 				end
 				itemstack:take_item()
-				minetest.sound_play("ftsp_0".. math.random(1, 2) ,
+				minetest.sound_play("ftsp",
 					{pos = pos, max_hear_distance = 8, gain = 0.5})
 				if not( sr == "no" )then
 					local inv = player:get_inventory()
@@ -458,7 +458,7 @@ for k, v in pairs(rack_types) do
 		local given = get_fantasy_cheese(product)
 
 		if player:is_player() then
-			minetest.sound_play("ftspw_0".. math.random(1, 3) ,
+			minetest.sound_play("ftspw",
 				{pos = pos, max_hear_distance = 8, gain = 0.5})
 
 			inv = player:get_inventory()

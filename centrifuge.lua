@@ -163,7 +163,7 @@ minetest.register_node("cheese:cream_separator", {
 			local accettable, given = is_accettable_source(itemname)
 			if accettable then
 
-				minetest.sound_play( {name = "splash_0"..math.random(1,2) , pos = pos, max_hear_distance = 14, gain = 1.0, })
+				minetest.sound_play({name = "cheese_splash" }, {pos = pos, max_hear_distance = 14, gain = 1.0}, true)
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then
