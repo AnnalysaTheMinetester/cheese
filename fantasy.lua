@@ -11,7 +11,16 @@ local fantasy_cheeses = {
 	-- cheese name, 		aged from item, mana+, status effect
 	{"sparkling_cheese",	"cheese:curd", 10, "manaregen"},
 }
-local gelatin = "group:food_gelatin"
+local gelatin
+
+if minetest.get_modpath("bonemeal") or minetest.get_modpath("ethereal") or cheese.farming or
+	minetest.get_modpath("petz") then
+	-- if gelatin is available
+	gelatin = "group:food_gelatin"
+else
+	-- if gelatin is not available, allow recipes continue to work
+	gelatin = ""
+end
 
 local juicer = ""
 if cheese.farming then
