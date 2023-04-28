@@ -11,15 +11,20 @@ local fantasy_cheeses = {
 	-- cheese name, 		aged from item, mana+, status effect
 	{"sparkling_cheese",	"cheese:curd", 10, "manaregen"},
 }
-local gelatin = ""
-if minetest.get_modpath("petz") then
+local gelatin
+
+if minetest.get_modpath("bonemeal") or minetest.get_modpath("ethereal") or cheese.farming or
+	minetest.get_modpath("petz") then
+	-- if gelatin is available
 	gelatin = "group:food_gelatin"
+else
+	-- if gelatin is not available, allow recipes continue to work
+	gelatin = ""
 end
 
 local juicer = ""
 if cheese.farming then
 	juicer = "farming:juicer"
-	gelatin = "group:food_gelatin"
 	table.insert(fantasy_cheeses, {"rose_ambrosia",	"farming:rose_water", 10, "regen"})
 end
 if minetest.get_modpath("ethereal") == nil then
@@ -48,8 +53,6 @@ else
 	table.insert(fantasy_cheeses, {"blazing_exquisitess",	"ethereal:firethorn_jelly", 10, "haste", "impetus"})
 	table.insert(fantasy_cheeses, {"frosted_tomme",				"cheese:frosted_spume", 20, "breeze",})
 	table.insert(fantasy_cheeses, {"shining_formage",			"cheese:shining_spume", 10, "regenm"})
-
-	gelatin = "group:food_gelatin"
 
 	minetest.register_craftitem("cheese:shining_spume", {
 		description = S("Shining Spume"),
@@ -95,13 +98,14 @@ local heal = function(player, value)
 	end
 end
 local cleanse = function(player)
-	local status = playereffects.get_player_effects(player:get_player_name())
-	for i=1, #status do
-		if status[i].effect_type_id == "snailing" or status[i].effect_type_id == "burden" or status[i].effect_type_id == "miasma" then
-			playereffects.cancel_effect(status[i].effect_id)
+	if cheese.playereffects then
+		local status = playereffects.get_player_effects(player:get_player_name())
+		for i=1, #status do
+			if status[i].effect_type_id == "snailing" or status[i].effect_type_id == "burden" or status[i].effect_type_id == "miasma" then
+				playereffects.cancel_effect(status[i].effect_id)
+			end
 		end
 	end
-
 end
 
 for k, v in pairs(fantasy_cheeses) do
@@ -146,8 +150,8 @@ for k, v in pairs(fantasy_cheeses) do
 	end
 
 	local ng_heal = 0
-	if v[1] == "shining_formage" then hg_heal = 8
-	elseif v[1] == "rose_ambrosia" then hg_heal = 4
+	if v[1] == "shining_formage" then ng_heal = 8
+	elseif v[1] == "rose_ambrosia" then ng_heal = 4
 	end
 
 	minetest.register_craftitem("cheese:"..v[1], {
@@ -405,12 +409,12 @@ for k, v in pairs(rack_types) do
 					minetest.chat_send_player(player:get_player_name(), S("You used 10 mana points."))
 				end
 				itemstack:take_item()
-				minetest.sound_play("ftsp_0".. math.random(1, 2) ,
+				minetest.sound_play("ftsp",
 					{pos = pos, max_hear_distance = 8, gain = 0.5})
 				if not( sr == "no" )then
 					local inv = player:get_inventory()
 					if inv:room_for_item("main", sr) then
-						leftover = inv:add_item("main", sr)
+						local leftover = inv:add_item("main", sr)
 						if not leftover:is_empty() then
 							minetest.add_item(player:get_pos(), leftover)
 						end
@@ -457,7 +461,7 @@ for k, v in pairs(rack_types) do
 		local given = get_fantasy_cheese(product)
 
 		if player:is_player() then
-			minetest.sound_play("ftspw_0".. math.random(1, 3) ,
+			minetest.sound_play("ftspw",
 				{pos = pos, max_hear_distance = 8, gain = 0.5})
 
 			inv = player:get_inventory()
@@ -469,7 +473,6 @@ for k, v in pairs(rack_types) do
 			else
 				minetest.add_item(player:get_pos(), given)
 			end
-			local node = minetest.get_node(pos)
 			minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_empty", param2 = node.param2})
 		end
 	end

@@ -73,7 +73,7 @@ minetest.register_craft({
 	cooktime = 20,
 })
 
-for k, v in pairs(cheese.aged_cheeses) do
+for _, v in pairs(cheese.aged_cheeses) do
 	local aged = {
 		description = S(""..v:gsub("_", " "):gsub("(%a)(%a+)", function(a, b) return string.upper(a) .. string.lower(b) end) ),
 		inventory_image = v..".png",

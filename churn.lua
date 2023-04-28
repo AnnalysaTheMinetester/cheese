@@ -160,11 +160,11 @@ minetest.register_node("cheese:churn", {
 			local accettable, given = is_accettable_source(itemname)
 			if accettable then
 
-				minetest.sound_play( {name = "churn".. math.random(1, 3), pos = pos, max_hear_distance = 16, gain = 1.0, })
+				minetest.sound_play({name = "cheese_churn"}, {pos = pos, max_hear_distance = 16, gain = 1.0}, true)
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then
-					leftover = inv:add_item("main", given)
+					local leftover = inv:add_item("main", given)
 					itemstack:take_item()
 					if not leftover:is_empty() then
 						minetest.add_item(player:get_pos(), leftover)

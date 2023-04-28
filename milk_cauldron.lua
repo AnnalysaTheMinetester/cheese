@@ -136,7 +136,7 @@ elseif minetest.registered_items["cheese:bone_gelatin"] then -- no bonemeal, but
 
 end
 
-for k,v in pairs(allowed_recipes) do
+for _,v in pairs(allowed_recipes) do
   if cheese.ui then
       unified_inventory.register_craft({
         type = "cauldron_boiling",
@@ -193,7 +193,7 @@ local function get_boiling_results(table_src)
   if s ~= nil  then
     src_name = s
   end
-  for k,v in pairs(allowed_recipes) do
+  for _,v in pairs(allowed_recipes) do
     if v[1] == src_name then
       output.item = v[2]
       output.second_item = v[3]
@@ -361,8 +361,8 @@ local function cauldron_node_timer(pos, elapsed)
 
 	local inv = meta:get_inventory()
 	local srclist, fuellist, dstlist
-  local srcslotslist, src_slot_size --------------------------------------------
-  local dst_full = false
+	local srcslotslist, src_slot_size --------------------------------------------
+	local dst_full = false
 
 	local timer_elapsed = meta:get_int("timer_elapsed") or 0
 	meta:set_int("timer_elapsed", timer_elapsed + 1)
@@ -371,24 +371,25 @@ local function cauldron_node_timer(pos, elapsed)
 	local fuel
 
 	local update = true
+	local still_room_for_cooked_item = false
+
 	while elapsed > 0 and update do
 		update = false
 
 		srclist = inv:get_list("src")
 		fuellist = inv:get_list("fuel")
-    srcslotslist = inv:get_list("src_slots") -----------------------------------
-    src_slot_size = inv:get_size("src_slots")
+		srcslotslist = inv:get_list("src_slots") -----------------------------------
+		src_slot_size = inv:get_size("src_slots")
 
-    dstlist = inv:get_list("dst") ----------------------------------------------
-    dstsize = inv:get_size("dst")
-    if get_stack_count(dstlist, dstsize) == dstsize then
-      dst_full = true
-    end
-    -- dst_full checks # of stacks, this one make it work even when dst is full,
-    -- yet there is indeed room for just the cooked item (its stack isnt full)
-    -- otherwise the cauldron gets stuck with 1 src item and using all fuel.
-    -- if dst gets full due to normal boiling, it stops. it should be like this.
-    local still_room_for_cooked_item = false
+		dstlist = inv:get_list("dst") ----------------------------------------------
+		local dstsize = inv:get_size("dst")
+		if get_stack_count(dstlist, dstsize) == dstsize then
+			dst_full = true
+		end
+		-- dst_full checks # of stacks, this one make it work even when dst is full,
+		-- yet there is indeed room for just the cooked item (its stack isnt full)
+		-- otherwise the cauldron gets stuck with 1 src item and using all fuel.
+		-- if dst gets full due to normal boiling, it stops. it should be like this.
 
 		--
 		-- Cooking
@@ -397,17 +398,18 @@ local function cauldron_node_timer(pos, elapsed)
 		-- Check if we have cookable content
 		local aftercooked
 		--cooked, aftercooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
-		cooked, aftercooked = get_boiling_results( {items = srclist} )
-    -- cooked is the output table with item, second_item, time, replacement
-    -- aftercooked is the scrlist with itemstack[1].take_item()
+		cooked, aftercooked = get_boiling_results({ items = srclist })
+		-- cooked is the output table with item, second_item, time, replacement
+		-- aftercooked is the scrlist with itemstack[1].take_item()
 		cookable = cooked.time ~= 0
 
 		local el = math.min(elapsed, fuel_totaltime - fuel_time)
-		if cookable then -- fuel lasts long enough, adjust el to cooking duration
+		if cookable then
+			-- fuel lasts long enough, adjust el to cooking duration
 			el = math.min(el, cooked.time - src_time)
-      still_room_for_cooked_item = inv:room_for_item("dst", cooked.item)
+			still_room_for_cooked_item = inv:room_for_item("dst", cooked.item)
 		end
-    --minetest.chat_send_all("still room = ".. tostring()still_room_for_cooked_item))
+		--minetest.chat_send_all("still room = ".. tostring()still_room_for_cooked_item))
 
 		-- Check if we have enough fuel to burn
 		if fuel_time < fuel_totaltime then
@@ -419,49 +421,49 @@ local function cauldron_node_timer(pos, elapsed)
 				if src_time >= cooked.time then
 					-- Place result in dst list if possible
 					if still_room_for_cooked_item then
-            local leftover = inv:add_item("dst", cooked.item)
-            local above = vector.new(pos.x, pos.y + 1, pos.z)
-            local drop_pos = minetest.find_node_near(above, 1, {"air"}) or above
+						local leftover = inv:add_item("dst", cooked.item)
+						local above = vector.new(pos.x, pos.y + 1, pos.z)
+						local drop_pos = minetest.find_node_near(above, 1, { "air" }) or above
 
-            if not leftover:is_empty() then
-              minetest.item_drop(cooked.item, nil, drop_pos)
-              still_room_for_cooked_item = false
-            end -- if leftover of item is not empty
+						if not leftover:is_empty() then
+							minetest.item_drop(cooked.item, nil, drop_pos)
+							still_room_for_cooked_item = false
+						end -- if leftover of item is not empty
 
-            if cooked.second_item ~= nil and inv:room_for_item("dst", cooked.second_item) then
-              leftover = inv:add_item("dst", cooked.second_item)
-              if not leftover:is_empty() then
-                dst_full = true
-                still_room_for_cooked_item = false
-                minetest.item_drop(cooked.second_item, nil, drop_pos)
-              end -- if leftover of second item is not empty
+						if cooked.second_item ~= nil and inv:room_for_item("dst", cooked.second_item) then
+							leftover = inv:add_item("dst", cooked.second_item)
+							if not leftover:is_empty() then
+								dst_full = true
+								still_room_for_cooked_item = false
+								minetest.item_drop(cooked.second_item, nil, drop_pos)
+							end -- if leftover of second item is not empty
 
-            end -- if there is a second item and there is room for it
+						end -- if there is a second item and there is room for it
 
-            if cooked.replacement ~= nil and inv:room_for_item("dst", cooked.replacement) then
-              leftover = inv:add_item("dst", cooked.replacement)
-              if not leftover:is_empty() then
-                dst_full = true
-                still_room_for_cooked_item = false
-                minetest.item_drop(cooked.replacement, nil, drop_pos)
-              end -- if leftover of replacement is not empty
+						if cooked.replacement ~= nil and inv:room_for_item("dst", cooked.replacement) then
+							leftover = inv:add_item("dst", cooked.replacement)
+							if not leftover:is_empty() then
+								dst_full = true
+								still_room_for_cooked_item = false
+								minetest.item_drop(cooked.replacement, nil, drop_pos)
+							end -- if leftover of replacement is not empty
 
-            end -- if there is a replacement and there is room for it
+						end -- if there is a replacement and there is room for it
 
-            inv:set_stack("src", 1, aftercooked.items[1] )
-            src_time = src_time - cooked.time
+						inv:set_stack("src", 1, aftercooked.items[1])
+						src_time = src_time - cooked.time
 
-            -- if src is now empty, try to take another item from src_slots ----
-            if inv:is_empty("src") and inv:is_empty("src_slots") == false then
-              if srcslotslist ~= nil then
-                local new_src = get_from_src_list(srcslotslist, src_slot_size)
-                if new_src ~= nil then
-                  inv:remove_item("src_slots", new_src)
-                  --inv:set_list("src_slots", ssl)
-                  inv:set_stack("src", 1, new_src)
-                end
-              end
-            end
+						-- if src is now empty, try to take another item from src_slots ----
+						if inv:is_empty("src") and inv:is_empty("src_slots") == false then
+							if srcslotslist ~= nil then
+								local new_src = get_from_src_list(srcslotslist, src_slot_size)
+								if new_src ~= nil then
+									inv:remove_item("src_slots", new_src)
+									--inv:set_list("src_slots", ssl)
+									inv:set_stack("src", 1, new_src)
+								end
+							end
+						end
 
 						update = true
 					else
@@ -469,7 +471,7 @@ local function cauldron_node_timer(pos, elapsed)
 					end
 					-- Play cooling sound
 					minetest.sound_play("default_cool_lava",
-						{pos = pos, max_hear_distance = 16, gain = 0.1}, true)
+						{ pos = pos, max_hear_distance = 16, gain = 0.1 }, true)
 				else
 					-- Item could not be cooked: probably missing fuel
 					update = true
@@ -477,10 +479,11 @@ local function cauldron_node_timer(pos, elapsed)
 			end
 		else
 			-- Furnace ran out of fuel
-			if cookable and still_room_for_cooked_item then --------------------------
+			if cookable and still_room_for_cooked_item then
+				--------------------------
 				-- We need to get new fuel
 				local afterfuel
-				fuel, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
+				fuel, afterfuel = minetest.get_craft_result({ method = "fuel", width = 1, items = fuellist })
 
 				if fuel.time == 0 then
 					-- No valid fuel in fuel list
@@ -495,7 +498,7 @@ local function cauldron_node_timer(pos, elapsed)
 						local leftover = inv:add_item("dst", replacements[1])
 						if not leftover:is_empty() then
 							local above = vector.new(pos.x, pos.y + 1, pos.z)
-							local drop_pos = minetest.find_node_near(above, 1, {"air"}) or above
+							local drop_pos = minetest.find_node_near(above, 1, { "air" }) or above
 							minetest.item_drop(replacements[1], nil, drop_pos)
 						end
 					end
@@ -528,7 +531,8 @@ local function cauldron_node_timer(pos, elapsed)
 	local item_percent = 0
 	if cookable then
 		item_percent = math.floor(src_time / cooked.time * 100)
-		if dst_full or still_room_for_cooked_item == false then --------------------
+		if dst_full or still_room_for_cooked_item == false then
+			--------------------
 			item_state = S("100% (output full)")
 		else
 			item_state = S("@1%", item_percent)
@@ -540,21 +544,22 @@ local function cauldron_node_timer(pos, elapsed)
 			item_state = S("Empty")
 		end
 	end
-  --[-[
-  local remaining_inputs = get_stack_count(srcslotslist, src_slot_size) --------
-  local slot_state
-  if srcslotslist and remaining_inputs > 0 then
-    slot_state = remaining_inputs .. " " .. S("Stacks in Input Slots")
-  else
-    slot_state = S("Input Slot Empty")
-  end
-  --]]--
+	--[-[
+	local remaining_inputs = get_stack_count(srcslotslist, src_slot_size) --------
+	local slot_state
+	if srcslotslist and remaining_inputs > 0 then
+		slot_state = remaining_inputs .. " " .. S("Stacks in Input Slots")
+	else
+		slot_state = S("Input Slot Empty")
+	end
+	--]]--
 
 	local fuel_state = S("No Fuel")
 	local active = false
 	local result = false
 
-	if fuel_totaltime ~= 0 and dst_full == false then ---------- dst_full == false
+	if fuel_totaltime ~= 0 and dst_full == false then
+		---------- dst_full == false
 		active = true
 		local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
 		fuel_state = S("@1%", fuel_percent)
@@ -564,9 +569,9 @@ local function cauldron_node_timer(pos, elapsed)
 		result = true
 
 		-- Play sound every 9 seconds while the furnace is active
-		if timer_elapsed == 0 or (timer_elapsed+1) % 9 == 0 then
-			minetest.sound_play("cooking_without_cover_01",
-				{pos = pos, max_hear_distance = 16, gain = 0.5}, true)
+		if timer_elapsed == 0 or (timer_elapsed + 1) % 9 == 0 then
+			minetest.sound_play("cooking_without_cover",
+				{ pos = pos, max_hear_distance = 16, gain = 0.5 }, true)
 		end
 	else
 		if fuellist and not fuellist[1]:is_empty() then
@@ -579,7 +584,6 @@ local function cauldron_node_timer(pos, elapsed)
 		meta:set_int("timer_elapsed", 0)
 	end
 
-
 	local infotext
 	if active then
 		infotext = S("Cauldron boiling")
@@ -587,7 +591,7 @@ local function cauldron_node_timer(pos, elapsed)
 		infotext = S("Cauldron inactive")
 	end
 	infotext = infotext .. "\n" .. S("(Item: @1; Fuel: @2)", item_state, fuel_state)
-             .. "\n(" .. slot_state .. ")" -------------------------------------
+		.. "\n(" .. slot_state .. ")" -------------------------------------
 
 	--
 	-- Set meta values
@@ -595,7 +599,8 @@ local function cauldron_node_timer(pos, elapsed)
 	meta:set_float("fuel_totaltime", fuel_totaltime)
 	meta:set_float("fuel_time", fuel_time)
 	meta:set_float("src_time", src_time)
-  meta:set_int("remaining_inputs", remaining_inputs) ---------------------------
+	meta:set_int("remaining_inputs", remaining_inputs)
+	---------------------------
 	meta:set_string("formspec", formspec)
 	meta:set_string("infotext", infotext)
 

@@ -87,7 +87,7 @@ function pep.moledig(playername)
 		if try_dig(pos) then
 			local n = minetest.get_node(pos)
 			local ndef = minetest.registered_nodes[n.name]
-			if ndef.sounds ~= nil then
+			if ndef and ndef.sounds and ndef.sounds.dug then
 				minetest.sound_play(ndef.sounds.dug, { pos = pos })
 			end
 			-- TODO: Replace this code as soon Minetest removes support for this function
@@ -438,4 +438,3 @@ minetest.register_craft({
 	output = "pep:jumpreset",
 	recipe = { "pep:jumpplus", "pep:jumpminus" }
 })
-

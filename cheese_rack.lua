@@ -200,7 +200,7 @@ for k, v in pairs(rack_types) do
 	cheese_rack_empty.on_rightclick = function(pos, node, player, itemstack, pointed_thing) -- pointed_thing can be nil when called by a mod :/
 		if player:is_player() and itemstack:get_name() == "cheese:curd" then
 			itemstack:take_item()
-			minetest.sound_play("ftsp_0".. math.random(1, 2) ,
+			minetest.sound_play("ftsp" ,
 				{pos = pos, max_hear_distance = 8, gain = 0.5})
 			minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_with_aging_cheese", param2 = node.param2})
 			local meta = minetest.get_meta(pos)
@@ -235,7 +235,7 @@ for k, v in pairs(rack_types) do
 		local given = get_cheese(v[3]) -- returns "cheese:name"
 
 		if player:is_player() then
-			minetest.sound_play("ftspw_0".. math.random(1, 3) ,
+			minetest.sound_play("ftspw",
 				{pos = pos, max_hear_distance = 8, gain = 0.5})
 
 			inv = player:get_inventory()
@@ -247,7 +247,6 @@ for k, v in pairs(rack_types) do
 			else
 				minetest.add_item(player:get_pos(), given)
 			end
-			local node = minetest.get_node(pos)
 			minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_empty", param2 = node.param2})
 		end
 	end
