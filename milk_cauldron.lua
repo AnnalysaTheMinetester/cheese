@@ -319,11 +319,27 @@ local function allow_metadata_inventory_put(pos, listname, index, stack, player)
       return 0
 		end
 	elseif listname == "src" then
-		return stack:get_count()
+		if index == 1 then
+			return stack:get_count()
+		else
+			if inv:room_for_item("src_slots", stack) then
+				return stack:get_count()
+			else
+				return 0
+			end
+		end
 	elseif listname == "src_slots" then
 		return stack:get_count()
 	elseif listname == "dst" then
 		return 0
+	end
+end
+
+local function on_metadata_inventory_put(pos, listname, index, stack, player)
+	if listname == "src" and index > 1 then
+		local inv = minetest.get_meta(pos):get_inventory()
+		inv:set_stack(listname, index, "")
+		inv:add_item("src_slots", stack)
 	end
 end
 
@@ -640,7 +656,7 @@ minetest.register_node("cheese:milk_cauldron", {
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
-		inv:set_size('src', 1)
+		inv:set_size('src', 2)  -- one of these is hidden, and used to move items into src_slots via shift-click
     inv:set_size('src_slots', 12) -----------------------------------------------
 		inv:set_size('fuel', 1)
 		inv:set_size('dst', 8)
@@ -650,9 +666,10 @@ minetest.register_node("cheese:milk_cauldron", {
 	on_metadata_inventory_move = function(pos)
 		minetest.get_node_timer(pos):start(1.0)
 	end,
-	on_metadata_inventory_put = function(pos)
+	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		-- start timer function, it will sort out whether furnace can burn or not.
 		minetest.get_node_timer(pos):start(1.0)
+		on_metadata_inventory_put(pos, listname, index, stack, player)
 	end,
 	on_metadata_inventory_take = function(pos)
 		-- check whether the furnace is empty or not.
@@ -713,6 +730,7 @@ minetest.register_node("cheese:milk_cauldron_active", {
 	allow_metadata_inventory_put = allow_metadata_inventory_put,
 	allow_metadata_inventory_move = allow_metadata_inventory_move,
 	allow_metadata_inventory_take = allow_metadata_inventory_take,
+	on_metadata_inventory_put = on_metadata_inventory_put,
 })
 
 minetest.register_craft({
@@ -734,3 +752,14 @@ if minetest.get_modpath("hopper") then
   	{"side", "cheese:milk_cauldron_active", "fuel"},
   })
 end
+
+minetest.register_lbm({
+	name = "cheese:update_cauldron_slots",
+	label = "cheese: update cauldron src slots",
+	nodenames = {"cheese:milk_cauldron", "cheese:milk_cauldron_active"},
+	run_at_every_load = false,  -- run once
+	action = function(pos, node, dtime_s)
+		local inv = minetest.get_meta(pos):get_inventory()
+		inv:set_size("src", 2)  -- one of these is hidden, and used to move items into src_slots via shift-click
+	end,
+})
