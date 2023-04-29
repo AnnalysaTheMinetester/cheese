@@ -39,7 +39,7 @@ else
 			inventory_image = "cheese_coconut_milk_glass.png",
 			--wield_image = "cheese_coconut_milk_glass.png",
 			on_use = minetest.item_eat(2, "vessels:drinking_glass"),
-			groups = {vessel = 1, food_coconut_milk = 1},
+			groups = {vessel = 1, food_coconut_milk = 1, food_milk_glass = 1},
 		})
 		if cheese.hunger_ng then
 			hunger_ng.add_hunger_data("cheese:coconut_milk", { satiates = 2, heals = 0, returns = "vessels:drinking_glass", timeout = 0 })
@@ -94,11 +94,11 @@ local function is_accettable_source(item_name)
 end
 
 local function should_return (item_name)
-	if item_name == "moretrees:coconut_milk" or item_name == "cheese:coconut_milk" then
-		return "vessels:drinking_glass"
-	elseif item_name == "mobs:wooden_bucket_milk" then
+	if item_name == "mobs:wooden_bucket_milk" then
 		return "wooden_bucket:bucket_wood_empty"
-	elseif minetest.get_item_group( item_name , "food_milk") or item_name == "cheese:bucket_cactus" then
+	elseif minetest.get_item_group(item_name, "food_milk_glass") > 0 or item_name == "moretrees:coconut_milk" then
+		return "vessels:drinking_glass"
+	elseif minetest.get_item_group( item_name , "food_milk") > 0 or item_name == "cheese:bucket_cactus" then
 		return "bucket:bucket_empty"
 	end
 	return "no"
