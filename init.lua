@@ -33,6 +33,7 @@ local craft_type_table = {
 	{"cheese_rack_aging", S("Cheese Rack Aging"), "default_wood.png^cheese_front.png"},
 	{"churning", S("Churning"), "churn.png"},
 	{"centrifugation", S("Centrifugation"), "cream_separator_front.png"},
+	{"ceiling_hanging", S("Hanging from a Ceiling"), "default_wood.png"},
 }
 -- each register craft recipe is in their own respective file
 for k,v in pairs(craft_type_table) do
