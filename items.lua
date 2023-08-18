@@ -282,6 +282,21 @@ minetest.register_node("cheese:caciocavallo", {
 	end,
 })
 
+if cheese.ui then
+	unified_inventory.register_craft({
+		type = "ceiling_hanging",
+		items = {"cheese:fresh_caciocavallo"},
+		output = "cheese:caciocavallo",
+	})
+end
+if cheese.i3 then
+	i3.register_craft({
+		type = "ceiling_hanging",
+		items = {"cheese:fresh_caciocavallo"},
+		result = "cheese:caciocavallo",
+	})
+end
+
 minetest.register_craftitem("cheese:scamorza", { -- less hunger, unless cooked aka "smoked"
 	description = S("Scamorza"),
 	inventory_image = "scamorza.png",
