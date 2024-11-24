@@ -1,0 +1,134 @@
+# textdomain: cheese
+
+
+### awards.lua ###
+
+Almost a pizza.=Почти пицца.
+Cheese!=Сыр!
+Craft Stretched Cheese, then shape it to get Mozzarella. If only you had tomato sauce and dough ...=Сделать вытяжной сыр, а затем придать ему форму, чтобы получить моцареллу. Если бы только у вас был томатный соус и тесто...
+Craft Stretched Cheese, then shape it to get a caciocavallo and let it age, by hanging it at the ceiling.=Сделать вытяжной сыр, а затем придать ему форму, чтобы получить качиокавалло и дать ему выдержаться, подвесив под потолок.
+Cream, Sweet Cream!=Сливки, сладкие сливки!
+Eat 50 pieces of cheese.=Съесть 50 кусков сыра.
+Eat a piece of cheese.=Съесть кусок сыра.
+Eat a piece of special cheese.=Съесть кусок особого сыра.
+Golden Butter.=Золотое масло.
+How? Why? Who cares!@nMore Cheese!=Как? Зачем? Да кого волнует!@nБольше сыра!
+I need to hang this?!=Нужно это повесить?!
+Place a Cheese Aging Rack.=Разместить стойку для выдержки сыра.
+Place a Churn.=Разместить маслобойку.
+Place a Copper Cauldron. You can use it to boil milk.=Разместить медный котел. Используйте его для кипячения молока.
+Place a Cream Separator.=Разместить сепаратор сливок.
+Ready. Set. Cheese!=На старт! Внимание! Сыр!
+The Milky Way.=Милки вэй.
+To make a mouse jealous.=Пусть мыши завидуют.
+
+### centrifuge.lua ###
+
+Milk Cream=Сливки
+Coconut Cream=Кокосовые сливки
+Coconut Milk=Кокосовое молоко
+Cactus Cream=Кактусовые сливки
+Cream Separator=Сепаратор сливок
+Makes cream from milk or whey.=Делает сливки из молока или сыворотки.
+
+### cheese_rack.lua ###
+
+Wooden Cheese Rack=Деревянная стойка для сыра
+Stone Cheese Rack=Каменная стойка для сыра
+Mossy Cheese Rack=Мшистая стойка для сыра
+
+### churn.lua ###
+
+Butter=Масло
+Churn=Маслобойка
+Makes butter from milk, or milk cream.=Делает масло из молока или сливок.
+Nut Oil=Ореховое масло
+Vegetable Butter=Овощное масло
+Vegetable Butter Preparation=Заготовка для овощного масла
+
+### fantasy.lua ###
+
+Obsidian Cheese Rack=Обсидиановая стойка для сыра
+
+Sparkling Cheese=Игристый сыр
+Rose Ambrosia=Розовая амброзия
+Desert Delicacy=Пустынный деликатес
+Blazing Exquisitess=Пылающий изыск
+Frosted Tomme=Замароженный томме
+Shining Formage=Сияющий формаж
+
+Breezing Spume=Морозная пена
+Bucket of Cactus Pulp=Ведро с мякотью кактуса
+Noxious Cheddar=Губительный Чеддер
+Shining Spume=Сверкающая пена
+You dont have enough mana to use the obsidian shelf.=У Вас недостаточно маны, чтобы использовать обсидиановую полку.
+You used 10 mana points.=Вы использовали 10 очков маны.
+
+### fantasy_effects.lua ###
+
+Burden=Ноша
+Breeze=Бриз
+Haste=Спешка
+Impetus=Импульс
+Major Regen=Большой реген
+Mana Regen=Манареген
+Miasma=Миазма
+Regen=Реген
+Snailing=Улитка
+
+### ice_cream.lua ###
+
+Ice Cream=Мороженое
+Neapolitan Ice Cream=Неаполитанское мороженое
+Vegan Ice Cream=Веганское мороженое
+
+### init.lua ###
+
+Boiling=Кипячение
+Centrifugation=Центрифугирование
+Cheese Rack Aging=Выдежка на сырной стойке
+Churning=Маслобойня
+
+### items.lua ###
+
+Parmesan=Пармезан
+Fontal=Фонтал
+Gruyere=Грюйер
+Emmental=Эмменталь
+Monteray Jack=Монтерей Джек
+Asiago=Азиаго
+Toma=Тома
+Gouda=Гауда
+Gorgonzola=Горгонзола
+Stilton=Стилтон
+Brie=Бри
+Stracchino=Страккино
+
+Caciocavallo=Качиокавалло
+Curd=Курт
+Fondue=Фондю
+Fresh Caciocavallo=Молодой Качиокавалло
+Fruit Tonic=Фруктовый тоник
+Mozzarella=Моцарелла
+Ricotta=Рикотта
+Scamorza=Скаморца
+Smoked Scamorza=Копченая Скаморца
+Stretched Cheese=Вытяжной сыр
+Whey=Сыворотка
+
+Seaweed in a Water Bucket=Морская капуста в ведре с водой
+Bones in a Water Bucket=Кости в ведре с водой
+Gelatin=Желатин
+
+### milk_cauldron.lua ###
+
+Stacks in Input Slots=Стаки во входных слотах
+Empty=Пустой
+Input Slot Empty=Входной слот пуст
+Milk Cauldron=Котел для молока
+Cauldron boiling=Котел кипит
+Cauldron inactive=Котел неактивен
+Cauldron is empty=Котел пуст
+No Fuel=Нет топлива
+Cannot be boiled=Нельзя сварить
+Salt=Соль
