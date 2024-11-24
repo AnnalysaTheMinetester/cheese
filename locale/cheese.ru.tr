@@ -122,13 +122,14 @@ Gelatin=Желатин
 
 ### milk_cauldron.lua ###
 
-Stacks in Input Slots=Стаки во входных слотах
-Empty=Пустой
+Stacks in Input Slots=стака(ов) во входных слотах
+Empty=пусто
 Input Slot Empty=Входной слот пуст
 Milk Cauldron=Котел для молока
 Cauldron boiling=Котел кипит
 Cauldron inactive=Котел неактивен
 Cauldron is empty=Котел пуст
-No Fuel=Нет топлива
+No Fuel=нет топлива
 Cannot be boiled=Нельзя сварить
 Salt=Соль
+(Item: @1; Fuel: @2)=(Предмет: @1; Топливо: @2)
