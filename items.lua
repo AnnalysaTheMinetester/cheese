@@ -454,5 +454,5 @@ if cheese.hunger_ng then
 	hunger_ng.add_hunger_data("cheese:caciocavallo", { satiates = 8, heals = 0, timeout = 0 })
 	hunger_ng.add_hunger_data("cheese:scamorza", { satiates = 4, heals = 0, timeout = 0 })
 	hunger_ng.add_hunger_data("cheese:smoked_scamorza", { satiates = 7, heals = 0, timeout = 0 })
-	hunger_ng.add_hunger_data("cheese:fondue", { satiates = 8, heals = 1, returns = "default:copper_ingot", timeout = 3 })
+	hunger_ng.add_hunger_data("cheese:fondue", { satiates = 8, heals = 1, returns = "cheese:fondue_pot", timeout = 3 })
 end
