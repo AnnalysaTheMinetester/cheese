@@ -165,6 +165,22 @@ for _,v in pairs(allowed_recipes) do
   		})
     end -- if second_item
   end -- if i3
+  if cheese.cg_plus then
+      cg.register_craft({
+        method = "cauldron_boiling",
+        items = {v[1]},
+        output = v[2],
+		time = v[5]
+      })
+    if v[3] ~= nil then
+        cg.register_craft({
+  			type = "cauldron_boiling",
+  			items = {v[1]},
+  			output = v[3],
+			time = v[5]
+  		})
+    end -- if second_item
+  end -- if cg_plus
 end -- for
 
 

@@ -80,6 +80,13 @@ for _, v in pairs(creamable) do
 			result = v[2]
 		})
 	end -- if i3
+	if cheese.cg_plus then
+		cg.register_craft({
+			method = "centrifugation",
+			items = {v[1]},
+			output = v[2]
+		})
+	end -- if cg_plus
 end -- for
 
 local function is_accettable_source(item_name)

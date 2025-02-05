@@ -178,6 +178,13 @@ for k, v in pairs(fantasy_cheeses) do
 			result = "cheese:"..v[1]
 		})
 	end
+	if cheese.cg_plus then
+		cg.register_craft({
+			method = "cheese_rack_aging",
+			items = {v[2]..""},
+			output = "cheese:"..v[1]
+		})
+	end
 	]]--
 
 end
