@@ -193,7 +193,7 @@ end
 
 
 local function should_return (item_name)
-	if item_name == "ethereal:bucket_cactus" or item_name == "cheese:frosted_spume" or item_name == "cheese:shining_spume" or item_name == "cheese:bucket_blooming_essence" then
+	if item_name == "cheese:bucket_cactus" or item_name == "ethereal:bucket_cactus" or item_name == "cheese:frosted_spume" or item_name == "cheese:shining_spume" or item_name == "cheese:bucket_blooming_essence" then
 		return "bucket:bucket_empty"
 	elseif item_name == "ethereal:firethorn_jelly" or item_name == "farming:rose_water" then
 		return "vessels:glass_bottle"
@@ -440,15 +440,15 @@ for k, v in pairs(rack_types) do
 	cheese_rack_with_aging_cheese.on_timer = function(pos)
 		if minetest.get_node_light(pos) <= 11 and math.random(1,10) <= 1 then
 			local node = minetest.get_node(pos)
-			local aging = minetest.get_meta(pos):get_string("aging")
 			if node.name ~= "ignore" then
+				local aging = minetest.get_meta(pos):get_string("aging")
 				minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_with_cheese", param2 = node.param2})
 				local meta = minetest.get_meta(pos)
 				meta:set_string("aging", aging)
 				return false
 			end
-			return true
 		end
+		return true
 	end
 
 	cheese_rack_with_cheese.on_punch = function(pos, node, player, pointed_thing)
