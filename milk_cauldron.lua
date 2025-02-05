@@ -244,6 +244,16 @@ local function get_stack_count (list, size)
   return count
 end
 
+-- from default/init.lua
+
+local function get_hotbar_bg(x, y, s)
+  local out = ""
+  for i = 0 , 7 do
+    out = out .. ("image[%g,%g;1,1;gui_hb_bg.png]"):format(x + (s + 1) * i, y)
+  end
+  return out
+end
+
 -- from default/furnace.lua
 
 local function get_cauldron_active_formspec(fuel_percent, item_percent)
@@ -257,6 +267,7 @@ local function get_cauldron_active_formspec(fuel_percent, item_percent)
     "image[6.2,2.4;1,1;gui_furnace_arrow_bg.png^[lowpart:" ..
     (item_percent)..":gui_furnace_arrow_fg.png^[transformR270]"..
     "list[context;dst;7.7,0.5;2,4]" ..
+	get_hotbar_bg(0.4, 5.75, 0.25) ..
     "list[current_player;main;0.4,5.75;8,1]" ..
     "list[current_player;main;0.4,7;8,3;8]" ..
     "listring[context;dst]" ..
@@ -266,8 +277,7 @@ local function get_cauldron_active_formspec(fuel_percent, item_percent)
     "listring[context;src_slots]" ..
     "listring[current_player;main]" ..
     "listring[context;fuel]" ..
-    "listring[current_player;main]" ..
-		default.get_hotbar_bg(0, 4.25)
+    "listring[current_player;main]"
 end
 
 local function get_cauldron_inactive_formspec()
@@ -279,6 +289,7 @@ local function get_cauldron_inactive_formspec()
     "image[4.7,2.4;1,1;default_furnace_fire_bg.png]" ..
     "image[6.2,2.4;1,1;gui_furnace_arrow_bg.png^[transformR270]" ..
     "list[context;dst;7.7,0.5;2,4]" ..
+	get_hotbar_bg(0.4, 5.75, 0.25) ..
     "list[current_player;main;0.4,5.75;8,1]" ..
     "list[current_player;main;0.4,7;8,3;8]" ..
     "listring[context;dst]" ..
@@ -288,8 +299,7 @@ local function get_cauldron_inactive_formspec()
     "listring[context;src_slots]" ..
     "listring[current_player;main]" ..
     "listring[context;fuel]" ..
-    "listring[current_player;main]" ..
-		default.get_hotbar_bg(0, 4.25)
+    "listring[current_player;main]"
 end
 
 --
