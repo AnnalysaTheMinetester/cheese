@@ -596,8 +596,8 @@ local function cauldron_node_timer(pos, elapsed)
 
 		-- Play sound every 9 seconds while the furnace is active
 		if timer_elapsed == 0 or (timer_elapsed + 1) % 9 == 0 then
-			minetest.sound_play("cooking_without_cover",
-				{ pos = pos, max_hear_distance = 16, gain = 0.5 }, true)
+			minetest.sound_play("cheese_cooking_without_cover",
+				{ max_hear_distance = 16, gain = 0.5 }, true)
 		end
 	else
 		if fuellist and not fuellist[1]:is_empty() then
