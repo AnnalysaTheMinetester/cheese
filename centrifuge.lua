@@ -54,7 +54,7 @@ else
 	end
 end
 
-if creamable[1] == nil then
+if not ( cheese.ethereal or cheese.cv ) then
 	-- register a default alternative to still get access to cream, and consequently, butter
 	minetest.register_craftitem("cheese:cactus_cream", {
 		description = S("Cactus Cream"),
