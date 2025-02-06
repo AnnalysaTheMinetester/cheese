@@ -88,7 +88,7 @@ function pep.moledig(playername)
 			local n = minetest.get_node(pos)
 			local ndef = minetest.registered_nodes[n.name]
 			if ndef and ndef.sounds and ndef.sounds.dug then
-				minetest.sound_play(ndef.sounds.dug, { pos = pos })
+				minetest.sound_play(ndef.sounds.dug, { pos = pos }, true)
 			end
 			-- TODO: Replace this code as soon Minetest removes support for this function
 			local drops = minetest.get_node_drops(n.name, "default:pick_steel")

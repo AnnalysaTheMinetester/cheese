@@ -100,6 +100,13 @@ for _, v in pairs(cheese.aged_cheeses) do
 			result = "cheese:"..v
 		})
 	end
+	if cheese.cg_plus then
+		cg.register_craft({
+			method = "cheese_rack_aging",
+			items = {"cheese:curd"},
+			output = "cheese:"..v
+		})
+	end
 	if cheese.hunger_ng then
 		hunger_ng.add_hunger_data("cheese:"..v , { satiates = 2, heals = 0, timeout = 0 })
 	end
@@ -294,6 +301,13 @@ if cheese.i3 then
 		type = "ceiling_hanging",
 		items = {"cheese:fresh_caciocavallo"},
 		result = "cheese:caciocavallo",
+	})
+end
+if cheese.cg_plus then
+	cg.register_craft({
+		method = "ceiling_hanging",
+		items = {"cheese:fresh_caciocavallo"},
+		output = "cheese:caciocavallo",
 	})
 end
 

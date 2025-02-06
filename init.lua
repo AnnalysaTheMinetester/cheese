@@ -5,6 +5,7 @@ cheese.italian_cheeses = {"parmesan","fontal","asiago","toma","gorgonzola","stra
 -- the check is done only once, otherwise it would check them many many times
 cheese.ui = minetest.get_modpath("unified_inventory") ~= nil
 cheese.i3 = minetest.get_modpath("i3") ~= nil
+cheese.cg_plus = minetest.get_modpath("cg_plus") ~= nil
 cheese.astral = minetest.get_modpath("astral") ~= nil
 cheese.farming = (minetest.global_exists("farming") and farming.mod == "redo")
 cheese.ethereal = minetest.get_modpath("ethereal")
@@ -50,6 +51,23 @@ for k,v in pairs(craft_type_table) do
 		i3.register_craft_type(v[1], {
 			description = v[2],
 			icon = v[3],
+		})
+	end
+	if cheese.cg_plus then
+		local get_infotext
+		if v[1] == "cauldron_boiling" then
+			get_infotext = function(craft)
+				return minetest.colorize("#FFFF00", cg.S("Time: @1 s", craft.time or 0))
+			end
+		end
+		cg.register_crafting_method(v[1], {
+			description = v[2],
+			arrow_icon = v[3],
+			uses_crafting_grid = false,
+			get_grid_size = function()
+				return {x = 1, y = 1}
+			end,
+			get_infotext = get_infotext
 		})
 	end
 end

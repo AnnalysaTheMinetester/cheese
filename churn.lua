@@ -61,12 +61,19 @@ if not ( cheese.farming or cheese.ethereal or cheese.cv ) then
 end -- if there is no known food oil registered already
 
 for i=1,#vegetable_milks do
+	local vegetable_milk = vegetable_milks[i]
+	local vegetable_cream
+	if vegetable_milk == "farming:soy_milk" and not ( cheese.ethereal or cheese.cv ) then
+		vegetable_cream = "cheese:cactus_cream"
+	else
+		vegetable_cream = "cheese:coconut_cream"
+	end
 	minetest.register_craft({
 		output = "cheese:vegetable_butter_prep",
 		type = "shapeless",
-		recipe = { "group:food_oil" , "cheese:coconut_cream", "cheese:coconut_cream", vegetable_milks[i], vegetable_milks[i] },
-		replacements = {{vegetable_milks[i] , "vessels:drinking_glass"},
-		{vegetable_milks[i] , "vessels:drinking_glass"},
+		recipe = { "group:food_oil" , vegetable_cream, vegetable_cream, vegetable_milk, vegetable_milk },
+		replacements = {{vegetable_milk , "vessels:drinking_glass"},
+		{vegetable_milk , "vessels:drinking_glass"},
 		{"group:food_oil" , "vessels:glass_bottle"}, },
 	})
 end
@@ -88,6 +95,13 @@ for k, v in pairs(churnable) do
 			result = v[2]
 		})
 	end -- if i3
+	if cheese.cg_plus then
+		cg.register_craft({
+			method = "churning",
+			items = {v[1]},
+			output = v[2]
+		})
+	end -- if cg_plus
 end -- for
 
 local function is_accettable_source(item_name)
@@ -160,7 +174,7 @@ minetest.register_node("cheese:churn", {
 			local accettable, given = is_accettable_source(itemname)
 			if accettable then
 
-				minetest.sound_play({name = "cheese_churn"}, {pos = pos, max_hear_distance = 16, gain = 1.0}, true)
+				minetest.sound_play("cheese_ftspw", {pos = pos, max_hear_distance = 16}, true)
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then

@@ -54,7 +54,7 @@ else
 	end
 end
 
-if creamable[1] == nil then
+if not ( cheese.ethereal or cheese.cv ) then
 	-- register a default alternative to still get access to cream, and consequently, butter
 	minetest.register_craftitem("cheese:cactus_cream", {
 		description = S("Cactus Cream"),
@@ -80,6 +80,13 @@ for _, v in pairs(creamable) do
 			result = v[2]
 		})
 	end -- if i3
+	if cheese.cg_plus then
+		cg.register_craft({
+			method = "centrifugation",
+			items = {v[1]},
+			output = v[2]
+		})
+	end -- if cg_plus
 end -- for
 
 local function is_accettable_source(item_name)
@@ -163,7 +170,7 @@ minetest.register_node("cheese:cream_separator", {
 			local accettable, given = is_accettable_source(itemname)
 			if accettable then
 
-				minetest.sound_play({name = "cheese_splash" }, {pos = pos, max_hear_distance = 14, gain = 1.0}, true)
+				minetest.sound_play("cheese_splash", {pos = pos, max_hear_distance = 14}, true)
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then
