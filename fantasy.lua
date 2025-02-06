@@ -417,7 +417,7 @@ for k, v in pairs(rack_types) do
 				end
 				itemstack:take_item()
 				minetest.sound_play("cheese_ftsp",
-					{max_hear_distance = 8, gain = 0.5}, true)
+					{pos = pos, max_hear_distance = 8, gain = 0.5}, true)
 				if not( sr == "no" )then
 					local inv = player:get_inventory()
 					if inv:room_for_item("main", sr) then
@@ -469,7 +469,7 @@ for k, v in pairs(rack_types) do
 
 		if player:is_player() then
 			minetest.sound_play("cheese_ftspw",
-				{max_hear_distance = 8, gain = 0.5}, true)
+				{pos = pos, max_hear_distance = 8, gain = 0.5}, true)
 
 			inv = player:get_inventory()
 			if inv:room_for_item("main", given) then

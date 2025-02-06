@@ -201,7 +201,7 @@ for k, v in pairs(rack_types) do
 		if player:is_player() and itemstack:get_name() == "cheese:curd" then
 			itemstack:take_item()
 			minetest.sound_play("cheese_ftsp",
-				{max_hear_distance = 8, gain = 0.5}, true)
+				{pos = pos, max_hear_distance = 8, gain = 0.5}, true)
 			minetest.set_node(pos, {name = "cheese:"..v[3].."_cheese_rack_with_aging_cheese", param2 = node.param2})
 			local meta = minetest.get_meta(pos)
 			meta:set_string("aging", itemstack:get_name())
@@ -236,7 +236,7 @@ for k, v in pairs(rack_types) do
 
 		if player:is_player() then
 			minetest.sound_play("cheese_ftspw",
-				{max_hear_distance = 8, gain = 0.5}, true)
+				{pos = pos, max_hear_distance = 8, gain = 0.5}, true)
 
 			inv = player:get_inventory()
 			if inv:room_for_item("main", given) then

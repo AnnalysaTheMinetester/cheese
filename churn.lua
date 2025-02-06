@@ -174,7 +174,7 @@ minetest.register_node("cheese:churn", {
 			local accettable, given = is_accettable_source(itemname)
 			if accettable then
 
-				minetest.sound_play({name = "cheese_churn"}, {max_hear_distance = 16, gain = 1.0}, true)
+				minetest.sound_play("cheese_ftspw", {pos = pos, max_hear_distance = 16}, true)
 
 				local inv = player:get_inventory()
 				if inv:room_for_item("main", given) then
